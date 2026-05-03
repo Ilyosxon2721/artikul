@@ -9,12 +9,29 @@ use App\Livewire\Profile\EditGeneralProfile;
 use App\Livewire\Profile\EditSellerProfile;
 use App\Livewire\Public\PublicBuyerProfile;
 use App\Livewire\Public\PublicSellerProfile;
+use App\Livewire\Sellers\SellerCatalog;
+use App\Livewire\Tasks\TaskCatalog;
+use App\Livewire\Tasks\TaskShow;
+use App\Livewire\Tasks\TaskWizard;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::view('/', 'welcome')->name('home');
 
-// Public profiles
+// Catalogs
+Route::get('/tasks', TaskCatalog::class)->name('tasks.index');
+Route::get('/sellers', SellerCatalog::class)->name('sellers.index');
+
+// Authenticated task management — must come BEFORE /tasks/{slug} catch-all
+Route::middleware('auth')->group(function (): void {
+    Route::get('tasks/create', TaskWizard::class)->name('tasks.create');
+    Route::get('tasks/{slug}/edit', TaskWizard::class)->name('tasks.edit');
+});
+
+// Task detail (after specific /tasks/* routes)
+Route::get('/tasks/{slug}', TaskShow::class)->name('tasks.show');
+
+// Public profiles (catalog at /sellers above wins for the exact match)
 Route::get('/buyers/{username}', PublicBuyerProfile::class)->name('public.buyer');
 Route::get('/sellers/{username}', PublicSellerProfile::class)->name('public.seller');
 
