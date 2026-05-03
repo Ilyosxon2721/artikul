@@ -57,6 +57,83 @@ return [
         ],
     ],
 
+    'landing' => [
+        'hero_title' => 'Marketplace tasks platform',
+        'hero_subtitle' => 'We connect Wildberries, Ozon and Uzum sellers with managers, designers, photographers and analysts who specialise in marketplaces.',
+        'cta_create_task' => 'Post a task',
+        'cta_find_work' => 'Find work',
+        'cta_join' => 'Join',
+        'stats' => [
+            'sellers' => 'verified freelancers',
+            'marketplaces' => 'marketplaces supported',
+            'tasks' => 'tasks posted',
+        ],
+        'how_title' => 'How it works',
+        'for_buyers' => 'For buyers',
+        'for_sellers' => 'For sellers',
+        'buyer_step1' => 'Describe the task in our structured wizard.',
+        'buyer_step2' => 'Get proposals from specialised freelancers.',
+        'buyer_step3' => 'Pick the right one, chat, accept the work, leave a review.',
+        'seller_step1' => 'Build your profile with specialisations and case studies.',
+        'seller_step2' => 'Browse fresh tasks and apply to relevant ones.',
+        'seller_step3' => 'Deliver work, build a rating, get more orders.',
+        'marketplaces_title' => 'We work with all major CIS marketplaces',
+        'categories_title' => 'Work categories',
+        'top_sellers_title' => 'Top freelancers',
+        'fresh_tasks_title' => 'Fresh tasks',
+        'see_all' => 'See all →',
+        'pricing_title' => 'Free at launch',
+        'pricing_subtitle' => 'No commission and no paid features for the first 6 months.',
+        'faq_title' => 'FAQ',
+        'faq' => [
+            'q1' => 'How is Artikul different from Upwork or Kwork?',
+            'a1' => "We're a vertical platform built for the marketplace industry — every profile, task and filter is built around real seller workflows.",
+            'q2' => 'How much does it cost?',
+            'a2' => 'Free at launch. No commission, no paid plans during the first months.',
+            'q3' => 'How are payments handled?',
+            'a3' => 'In the MVP, payments happen between the parties; the platform records the deal. Escrow via a banking partner is planned for phase 2.',
+            'q4' => 'Who are verified freelancers?',
+            'a4' => 'Freelancers who passed manual review of documents and marketplace experience.',
+            'q5' => 'What if a freelancer fails to deliver?',
+            'a5' => 'Open a dispute — an Artikul moderator reviews the chat and files within 5 business days.',
+            'q6' => 'Can I work without sharing personal contacts?',
+            'a6' => 'Yes. The internal chat, files, statuses and reviews stay on the platform.',
+            'q7' => 'Which marketplaces are supported?',
+            'a7' => 'Wildberries, Ozon, Uzum Market, Yandex Market, SberMegaMarket, KazanExpress.',
+            'q8' => 'Where is the platform based?',
+            'a8' => 'Artikul is built in Uzbekistan (Kokand) and serves the entire CIS region.',
+        ],
+    ],
+
+    'footer' => [
+        'platform' => 'Platform',
+        'company' => 'Company',
+        'about' => 'About',
+        'terms' => 'Terms',
+        'privacy' => 'Privacy',
+        'contacts' => 'Contacts',
+    ],
+
+    'about' => [
+        'title' => 'About',
+        'intro' => 'Artikul is a vertical task marketplace for the CIS marketplace industry.',
+        'body' => 'We build a professional community where Wildberries, Ozon and Uzum sellers find specialised freelancers.',
+    ],
+
+    'how' => [
+        'title' => 'How it works',
+    ],
+
+    'terms' => [
+        'title' => 'Terms of service',
+        'placeholder' => 'Full terms will be published before the public launch.',
+    ],
+
+    'privacy' => [
+        'title' => 'Privacy policy',
+        'placeholder' => 'Full privacy policy will be published before the public launch.',
+    ],
+
     'tasks' => [
         'wizard_title' => 'New task',
         'step_n' => 'Step :current of :total',

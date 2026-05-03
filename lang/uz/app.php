@@ -57,6 +57,83 @@ return [
         ],
     ],
 
+    'landing' => [
+        'hero_title' => 'Marketplace sanoati uchun vazifalar birjasi',
+        'hero_subtitle' => 'Wildberries, Ozon, Uzum va boshqa marketpleyslardagi sotuvchilarni menejerlar, dizaynerlar, fotograflar va analitiklar bilan bog‘laymiz.',
+        'cta_create_task' => 'Vazifa yaratish',
+        'cta_find_work' => 'Ish topish',
+        'cta_join' => 'Qo‘shilish',
+        'stats' => [
+            'sellers' => 'tasdiqlangan ijrochi',
+            'marketplaces' => 'marketpleys',
+            'tasks' => 'eʼlon qilingan vazifa',
+        ],
+        'how_title' => 'Qanday ishlaydi',
+        'for_buyers' => 'Buyurtmachilar uchun',
+        'for_sellers' => 'Ijrochilar uchun',
+        'buyer_step1' => 'Strukturalashgan konstruktor orqali vazifani tasvirlang.',
+        'buyer_step2' => 'Profilli ijrochilardan javoblar oling.',
+        'buyer_step3' => 'Mosini tanlang, ish boshlang va sharh qoldiring.',
+        'seller_step1' => 'Mutaxassisliklar va portfolio bilan profil yarating.',
+        'seller_step2' => 'Yangi vazifalarni koʻrib, mosiga javob bering.',
+        'seller_step3' => 'Ishni bajaring, reyting toʻplang, koʻproq buyurtma oling.',
+        'marketplaces_title' => 'MDH ning asosiy marketpleyslari bilan ishlaymiz',
+        'categories_title' => 'Ish kategoriyalari',
+        'top_sellers_title' => 'Yetakchi ijrochilar',
+        'fresh_tasks_title' => 'Yangi vazifalar',
+        'see_all' => 'Barchasi →',
+        'pricing_title' => 'Boshlang‘ich bosqichda bepul',
+        'pricing_subtitle' => 'Birinchi 6 oy davomida hech qanday komissiya va pulli funksiyalar yo‘q.',
+        'faq_title' => 'Tez-tez beriladigan savollar',
+        'faq' => [
+            'q1' => 'Artikul Upwork va Kwork dan nimasi bilan farq qiladi?',
+            'a1' => 'Biz marketpleys sanoati uchun maxsus vertikal birjamiz.',
+            'q2' => 'Roʻyxatdan oʻtish necha pul?',
+            'a2' => 'Boshlanishida — toʻliq bepul.',
+            'q3' => 'Toʻlov qanday amalga oshiriladi?',
+            'a3' => 'MVP bosqichida toʻlov tomonlar oʻrtasida amalga oshadi; eskrou keyingi bosqichda.',
+            'q4' => 'Tasdiqlangan ijrochilar kim?',
+            'a4' => 'Hujjatlari va tajribasi qoʻlda tekshirilgan ijrochilar.',
+            'q5' => 'Ijrochi ish bajarmasa nima qilish kerak?',
+            'a5' => 'Sahifada nizo oching — moderator 5 ish kuni ichida koʻrib chiqadi.',
+            'q6' => 'Kontaktlar ulashmasdan ishlash mumkinmi?',
+            'a6' => 'Ha. Chat, fayllar, statuslar — hammasi platforma ichida.',
+            'q7' => 'Qaysi marketpleyslar qoʻllab-quvvatlanadi?',
+            'a7' => 'Wildberries, Ozon, Uzum Market, Yandex Market, СберМегаМаркет, KazanExpress.',
+            'q8' => 'Platforma qayerda joylashgan?',
+            'a8' => 'Artikul — Oʻzbekistondagi loyiha (Qoʻqon).',
+        ],
+    ],
+
+    'footer' => [
+        'platform' => 'Platforma',
+        'company' => 'Kompaniya',
+        'about' => 'Biz haqimizda',
+        'terms' => 'Shartlar',
+        'privacy' => 'Maxfiylik',
+        'contacts' => 'Aloqa',
+    ],
+
+    'about' => [
+        'title' => 'Loyiha haqida',
+        'intro' => 'Artikul — MDH dagi marketpleys sanoati uchun vertikal vazifalar birjasi.',
+        'body' => 'Biz professional hamjamiyat yaratamiz.',
+    ],
+
+    'how' => [
+        'title' => 'Qanday ishlaydi',
+    ],
+
+    'terms' => [
+        'title' => 'Foydalanuvchi shartnomasi',
+        'placeholder' => 'Toʻliq matn ommaviy versiya ishga tushirilgunga qadar eʼlon qilinadi.',
+    ],
+
+    'privacy' => [
+        'title' => 'Maxfiylik siyosati',
+        'placeholder' => 'Toʻliq siyosat ommaviy versiya ishga tushirilgunga qadar eʼlon qilinadi.',
+    ],
+
     'tasks' => [
         'wizard_title' => 'Yangi vazifa',
         'step_n' => ':total dan :current qadam',

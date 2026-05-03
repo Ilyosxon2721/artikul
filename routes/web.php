@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\HealthController;
+use App\Livewire\Landing\Home;
 use App\Livewire\Onboarding\SellerOnboarding;
 use App\Livewire\Profile\EditBuyerProfile;
 use App\Livewire\Profile\EditGeneralProfile;
@@ -16,7 +18,16 @@ use App\Livewire\Tasks\TaskWizard;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', Home::class)->name('home');
+
+// Static pages
+Route::view('/about', 'landing.about')->name('about');
+Route::view('/how-it-works', 'landing.how-it-works')->name('how-it-works');
+Route::view('/terms', 'landing.terms')->name('terms');
+Route::view('/privacy', 'landing.privacy')->name('privacy');
+
+// Health
+Route::get('/health', HealthController::class)->name('health');
 
 // Catalogs
 Route::get('/tasks', TaskCatalog::class)->name('tasks.index');
