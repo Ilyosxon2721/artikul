@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -33,6 +35,24 @@ return [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
+    ],
+
+    'eskiz' => [
+        'email' => env('ESKIZ_EMAIL', ''),
+        'password' => env('ESKIZ_PASSWORD', ''),
+        'sender_id' => env('ESKIZ_SENDER_ID', '4546'),
+        'base_url' => env('ESKIZ_BASE_URL', 'https://notify.eskiz.uz/api'),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URL'),
+    ],
+
+    'telegram' => [
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+        'bot_username' => env('TELEGRAM_BOT_USERNAME', 'artikul_bot'),
     ],
 
 ];
