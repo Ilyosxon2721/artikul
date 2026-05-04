@@ -16,6 +16,9 @@ use App\Livewire\Onboarding\SellerOnboarding;
 use App\Livewire\Profile\EditBuyerProfile;
 use App\Livewire\Profile\EditGeneralProfile;
 use App\Livewire\Profile\EditSellerProfile;
+use App\Livewire\Profile\NotificationPreferences;
+use App\Livewire\Profile\PortfolioManager;
+use App\Livewire\Profile\ServicesManager;
 use App\Livewire\Profile\TelegramLink;
 use App\Livewire\Proposals\MyProposals;
 use App\Livewire\Proposals\TaskProposalsList;
@@ -24,6 +27,7 @@ use App\Livewire\Public\PublicSellerProfile;
 use App\Livewire\Referrals\ReferralDashboard;
 use App\Livewire\Reviews\LeaveReview;
 use App\Livewire\Search\GlobalSearch;
+use App\Livewire\Search\MySavedSearches;
 use App\Livewire\Sellers\SellerCatalog;
 use App\Livewire\Tasks\TaskCatalog;
 use App\Livewire\Tasks\TaskShow;
@@ -124,6 +128,14 @@ Route::middleware('auth')->group(function (): void {
 
     // Referrals
     Route::get('dashboard/referrals', ReferralDashboard::class)->name('referrals.dashboard');
+
+    // Portfolio, services, notification preferences
+    Route::get('profile/portfolio', PortfolioManager::class)->name('profile.portfolio');
+    Route::get('profile/services', ServicesManager::class)->name('profile.services');
+    Route::get('profile/notification-preferences', NotificationPreferences::class)->name('profile.notification-prefs');
+
+    // Saved searches
+    Route::get('dashboard/saved-searches', MySavedSearches::class)->name('saved-searches.index');
 });
 
 require __DIR__.'/auth.php';

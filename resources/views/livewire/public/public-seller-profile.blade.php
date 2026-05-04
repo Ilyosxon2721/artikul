@@ -69,6 +69,50 @@
                     </div>
                 </div>
             @endif
+
+            @if ($profile->portfolios->count() > 0)
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-sm font-semibold text-gray-700 mb-3">{{ __('app.portfolio.title') }}</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        @foreach ($profile->portfolios as $item)
+                            <div class="border border-gray-100 rounded-lg p-3">
+                                @if ($item->cover_url)
+                                    <img src="{{ $item->cover_url }}" alt="" class="w-full aspect-video object-cover rounded mb-2" />
+                                @endif
+                                <div class="font-medium text-sm text-gray-800">{{ $item->title }}</div>
+                                @if ($item->description)
+                                    <p class="text-xs text-gray-500 mt-1 line-clamp-3">{{ $item->description }}</p>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if ($profile->services->count() > 0)
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-sm font-semibold text-gray-700 mb-3">{{ __('app.services.title') }}</h2>
+                    <div class="space-y-2">
+                        @foreach ($profile->services as $service)
+                            <div class="flex items-center justify-between border border-gray-100 rounded-lg p-3">
+                                <div>
+                                    <div class="font-medium text-sm text-gray-800">{{ $service->title }}</div>
+                                    @if ($service->description)
+                                        <div class="text-xs text-gray-500 mt-1 line-clamp-2">{{ $service->description }}</div>
+                                    @endif
+                                </div>
+                                @if ($service->price)
+                                    <div class="text-sm font-semibold text-gray-800 shrink-0 ml-3">{{ number_format((float) $service->price, 0, '.', ' ') }} {{ $service->currency?->value }}</div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <livewire:reviews.reviews-list :userId="$user->id" :wire:key="'reviews-'.$user->id" />
+            </div>
         </div>
 
         <aside class="space-y-4">

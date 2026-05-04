@@ -70,6 +70,18 @@ new class extends Component
                         <x-dropdown-link :href="route('profile.seller.edit')" wire:navigate>
                             {{ __('app.nav.profile_seller') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.portfolio')" wire:navigate>
+                            {{ __('app.portfolio.title') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.services')" wire:navigate>
+                            {{ __('app.services.title') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.notification-prefs')" wire:navigate>
+                            {{ __('app.notifications_prefs.title') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('saved-searches.index')" wire:navigate>
+                            {{ __('app.saved_searches.my_title') }}
+                        </x-dropdown-link>
 
                         <div class="border-t border-gray-100 my-1"></div>
 

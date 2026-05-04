@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Notifications;
 
 use App\Models\SavedSearch;
+use App\Notifications\Channels\TelegramChannel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -21,7 +22,17 @@ class SavedSearchMatchNotification extends Notification
 
     public function via(object $notifiable): array
     {
-        return ['database', 'mail'];
+        $channels = ['database'];
+
+        $notifyVia = (array) ($this->savedSearch->notify_via ?? []);
+        if (in_array('email', $notifyVia, true)) {
+            $channels[] = 'mail';
+        }
+        if (in_array('telegram', $notifyVia, true)) {
+            $channels[] = TelegramChannel::class;
+        }
+
+        return $channels;
     }
 
     public function toMail(object $notifiable): MailMessage
@@ -35,6 +46,18 @@ class SavedSearchMatchNotification extends Notification
         }
 
         return $message->action(__('app.notifications.cta_open'), route('tasks.index'));
+    }
+
+    public function toTelegram(object $notifiable): array
+    {
+        $lines = ['🔔 <b>'.$this->savedSearch->name.'</b>'];
+        $lines[] = __('app.notifications.saved_search.body', ['count' => $this->matches->count()]);
+
+        foreach ($this->matches->take(5) as $task) {
+            $lines[] = '• '.$task->title.' — '.url('/tasks/'.$task->slug);
+        }
+
+        return ['text' => implode("\n", $lines)];
     }
 
     public function toArray(object $notifiable): array

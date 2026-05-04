@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Listeners\SendWelcomeOnRegistration;
 use App\Models\Task;
+use App\Observers\TaskObserver;
 use App\Policies\TaskPolicy;
 use App\Services\Eskiz\EskizService;
 use App\Services\Telegram\TelegramClient;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
@@ -49,6 +53,10 @@ class AppServiceProvider extends ServiceProvider
         $this->configureRateLimiters();
 
         Gate::policy(Task::class, TaskPolicy::class);
+
+        Event::listen(Registered::class, SendWelcomeOnRegistration::class);
+
+        Task::observe(TaskObserver::class);
     }
 
     private function configureRateLimiters(): void

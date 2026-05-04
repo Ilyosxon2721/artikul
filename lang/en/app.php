@@ -147,12 +147,42 @@ return [
 
     'terms' => [
         'title' => 'Terms of service',
-        'placeholder' => 'Full terms will be published before the public launch.',
+        'last_updated' => 'Last updated: :date',
+        'contact' => 'Questions about the terms — write to',
+        's1_title' => 'General provisions',
+        's1_body' => 'Artikul.uz (the "Platform") is operated by sole proprietor Sobirov Ilyoskhon (Republic of Uzbekistan, Kokand) and provides tools for posting tasks and finding contractors in the marketplace industry. By registering you accept these Terms and the Privacy Policy.',
+        's2_title' => 'Registration and accounts',
+        's2_body' => 'You must be at least 18 years old. One person — one account. Sharing accounts, transferring access or automating actions without permission is prohibited; violations may result in a ban.',
+        's3_title' => 'Role of the Platform',
+        's3_body' => 'The Platform is an information intermediary between Buyers and Sellers and is not a party to the contracts they conclude. The Platform is not liable for the quality, deadlines or financial obligations of the parties. In the MVP phase payments happen directly between the parties; escrow is planned for phase 2.',
+        's4_title' => 'Content and conduct',
+        's4_body' => 'The following are prohibited: illegal services, IP infringement, evading the platform fee once introduced, sharing contacts in chat before a proposal is accepted, posting false information about your profile or experience. The Platform may hide or remove tasks, proposals and accounts that break these rules.',
+        's5_title' => 'Disputes',
+        's5_body' => 'Either party can open a dispute inside the Platform. An Artikul moderator reviews the case within 5 business days and issues a decision. In the MVP this decision is reputational (recorded in the history and affects rating).',
+        's6_title' => 'Liability',
+        's6_body' => 'The Platform is provided "as is". We are not liable for lost profits or indirect damages. Total liability of the Platform to a user is limited to the amount of fees actually paid by that user in the previous 6 months.',
+        's7_title' => 'Changes to the terms',
+        's7_body' => 'We may update these Terms. Material changes will be posted on /terms and/or emailed to users. Continuing to use the Platform after publication constitutes acceptance.',
     ],
 
     'privacy' => [
         'title' => 'Privacy policy',
-        'placeholder' => 'Full privacy policy will be published before the public launch.',
+        'last_updated' => 'Last updated: :date',
+        'contact' => 'For privacy questions write to',
+        's1_title' => 'Data we collect',
+        's1_body' => 'Name, email, phone, region, hourly rate, specialisations, files (verification documents, portfolio, attachments to tasks and chat), technical data (IP, user-agent, visit times) and integration identifiers (Google sub, Telegram chat_id).',
+        's2_title' => 'Purposes',
+        's2_body' => 'Authentication, task / freelancer matching, contract handling and arbitration, email + Telegram notifications per the user\'s preferences, anti-fraud (passport hash) and product analytics (Plausible).',
+        's3_title' => 'Sharing with third parties',
+        's3_body' => 'We do not sell personal data. We share with sub-processors strictly required to operate the service (hosting, S3 storage, Eskiz SMS, Mailgun/Resend, Sentry) and with state authorities upon a justified request.',
+        's4_title' => 'Storage and security',
+        's4_body' => 'Verification documents live in an encrypted S3 bucket with restricted access. Passwords are bcrypt-hashed. The service uses HTTPS, CSRF protection, security headers and rate-limiting on sensitive forms. Database backups are taken daily and kept for 30 days.',
+        's5_title' => 'Your rights',
+        's5_body' => 'You can view your data on /profile, export it or request deletion via support@artikul.uz. After deletion we retain anonymised records of completed contracts and reviews for 3 years (for accounting and arbitration).',
+        's6_title' => 'Cookies and analytics',
+        's6_body' => 'We use only strictly necessary cookies (session, CSRF token, language preference). Plausible analytics is cookie-less and does not collect personal identifiers.',
+        's7_title' => 'Data controller',
+        's7_body' => 'Sobirov Ilyoskhon, Kokand, Republic of Uzbekistan. Email for requests: privacy@artikul.uz.',
     ],
 
     'chat' => [
@@ -259,6 +289,74 @@ return [
         'stats' => ['total' => 'total', 'active' => 'active', 'earned' => 'earned'],
     ],
 
+    'saved_searches' => [
+        'save_button' => 'Save search',
+        'modal_title' => 'Save this search',
+        'saved' => 'Search saved.',
+        'my_title' => 'My saved searches',
+        'empty' => 'No saved searches yet.',
+        'last_alert' => 'last alert :time',
+        'pause' => 'Pause',
+        'resume' => 'Resume',
+        'confirm_delete' => 'Delete this saved search?',
+        'frequency' => ['instant' => 'Instant', 'daily' => 'Daily', 'weekly' => 'Weekly'],
+        'fields' => ['name' => 'Name', 'frequency' => 'Frequency', 'channels' => 'Delivery channels'],
+    ],
+
+    'portfolio' => [
+        'title' => 'Portfolio',
+        'add' => 'Add case study',
+        'edit' => 'Edit case study',
+        'saved' => 'Case study saved.',
+        'empty' => 'No portfolio items yet.',
+        'fields' => ['title' => 'Title', 'description' => 'Description', 'cover' => 'Cover image', 'client_name' => 'Client', 'completed_on' => 'Completed on'],
+    ],
+
+    'services' => [
+        'title' => 'Services (Gigs)',
+        'add' => 'Add service',
+        'edit' => 'Edit service',
+        'saved' => 'Service saved.',
+        'empty' => 'No services yet.',
+        'delivery_days' => '{1}1 day|[2,*]:count days',
+        'fields' => ['title' => 'Title', 'description' => 'Description', 'price' => 'Price', 'currency' => 'Currency', 'delivery_days' => 'Delivery (days)'],
+    ],
+
+    'notifications_prefs' => [
+        'title' => 'Notifications',
+        'saved' => 'Preferences saved.',
+        'frequency' => 'Frequency',
+        'instant' => 'Instant',
+        'daily_digest' => 'Daily digest',
+        'important_only' => 'Important only',
+        'channels_title' => 'Channels per category',
+        'category' => 'Category',
+        'cat' => [
+            'tasks' => 'New tasks', 'proposals' => 'Proposals', 'contracts' => 'Contracts',
+            'chat' => 'Chat', 'reviews' => 'Reviews', 'disputes' => 'Disputes',
+        ],
+    ],
+
+    'email' => [
+        'welcome' => [
+            'subject' => 'Welcome to Artikul',
+            'greeting' => 'Hi :name!',
+            'body' => 'Thanks for joining Artikul — the marketplace task platform. Everything is free at launch: post a task or find work right now.',
+            'cta' => 'Open dashboard',
+            'footer' => 'Questions? Reply to this email or ping us on Telegram @artikul_uz.',
+        ],
+        'onboarding_step1' => [
+            'subject' => 'Post your first task in 2 minutes',
+            'body' => 'Use the structured wizard to describe the task and start receiving relevant proposals today.',
+            'cta' => 'Create a task',
+        ],
+        'reactivation' => [
+            'subject' => "We've missed you — see what's new on Artikul",
+            'body' => 'Fresh tasks have been posted in your niche. Take a look in 2 minutes.',
+            'cta' => 'Open catalog',
+        ],
+    ],
+
     'verification' => [
         'title' => 'Seller verification',
         'subtitle' => 'Upload your documents. An Artikul moderator will review within 1–3 business days.',
@@ -301,9 +399,18 @@ return [
         'unlinked' => 'Account unlinked.',
         'help' => 'Commands: /start, /link <code>, /unlink, /help',
         'unknown' => "I don't know that command. /help",
+        'not_linked' => 'Link your account first with /link <code>.',
+        'tasks_header' => 'Active contracts',
+        'tasks_empty' => 'You have no active contracts.',
+        'proposals_header' => 'Pending proposals',
+        'proposals_empty' => 'You have no pending proposals.',
     ],
 
     'reviews' => [
+        'list_title' => 'Reviews ({count})',
+        'empty' => 'No reviews yet.',
+        'reply' => 'Reply',
+        'sort' => ['newest' => 'Newest', 'rating_desc' => 'Highest rating', 'rating_asc' => 'Lowest first'],
         'leave_title' => 'Leave a review',
         'about_seller' => 'Rate the seller for this contract.',
         'about_buyer' => 'Rate the buyer for this contract.',

@@ -53,6 +53,12 @@ return [
     'telegram' => [
         'bot_token' => env('TELEGRAM_BOT_TOKEN'),
         'bot_username' => env('TELEGRAM_BOT_USERNAME', 'artikul_bot'),
+        'jobs_channel' => env('TELEGRAM_JOBS_CHANNEL'),
+    ],
+
+    'plausible' => [
+        'domain' => env('PLAUSIBLE_DOMAIN'),
+        'host' => env('PLAUSIBLE_HOST', 'https://plausible.io'),
     ],
 
 ];

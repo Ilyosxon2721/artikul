@@ -20,7 +20,7 @@ class PublicSellerProfile extends Component
             ->where('username', $username)
             ->where('is_banned', false)
             ->whereNotNull('username')
-            ->with(['sellerProfile.specializations', 'sellerProfile.marketplaces'])
+            ->with(['sellerProfile.specializations', 'sellerProfile.marketplaces', 'sellerProfile.portfolios', 'sellerProfile.services'])
             ->firstOrFail();
 
         abort_if($this->user->sellerProfile === null, 404);

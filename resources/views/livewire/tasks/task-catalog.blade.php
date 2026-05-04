@@ -62,9 +62,17 @@
                     {{ __('app.tasks.verified_buyer_only') }}
                 </label>
 
-                <button type="button" wire:click="clearFilters" class="text-xs text-blue-600 hover:underline">
-                    {{ __('app.tasks.clear_filters') }}
-                </button>
+                <div class="flex items-center justify-between pt-2">
+                    <button type="button" wire:click="clearFilters" class="text-xs text-blue-600 hover:underline">
+                        {{ __('app.tasks.clear_filters') }}
+                    </button>
+                    @auth
+                        <livewire:search.save-search
+                            :filters="['marketplace_ids' => $marketplaceIds, 'category_id' => $categoryId, 'task_type' => $taskType, 'budget_min' => $budgetMin, 'budget_max' => $budgetMax]"
+                            :query="$search"
+                            :key="'save-search-'.implode('-', $marketplaceIds).'-'.($categoryId ?? '0')" />
+                    @endauth
+                </div>
             </div>
         </aside>
 

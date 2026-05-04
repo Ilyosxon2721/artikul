@@ -25,6 +25,30 @@ parameters:
 			path: app/Http/Controllers/Auth/GoogleController.php
 
 		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$slug\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Telegram/WebhookController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Controllers/Telegram/WebhookController.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>slug" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Controllers/Telegram/WebhookController.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Http/Controllers/Telegram/WebhookController.php
+
+		-
 			message: '#^Using nullsafe property access on non\-nullable type App\\Enums\\Currency\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1
@@ -125,6 +149,12 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Livewire/Profile/EditSellerProfile.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>value" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Livewire/Profile/ServicesManager.php
 
 		-
 			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'
@@ -257,6 +287,12 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ProposalRejectedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>value" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Observers/TaskObserver.php
 
 		-
 			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'

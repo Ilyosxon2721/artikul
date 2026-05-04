@@ -147,12 +147,42 @@ return [
 
     'terms' => [
         'title' => 'Foydalanuvchi shartnomasi',
-        'placeholder' => 'Toʻliq matn ommaviy versiya ishga tushirilgunga qadar eʼlon qilinadi.',
+        'last_updated' => 'Oxirgi yangilanish: :date',
+        'contact' => 'Shartnoma boʻyicha savollar uchun email:',
+        's1_title' => 'Umumiy qoidalar',
+        's1_body' => 'Artikul.uz platformasi marketpleyslar industriyasida vazifa eʼlon qilish va ijrochi topish vositasi. Roʻyxatdan oʻtish — ushbu shartlar va Maxfiylik siyosatiga rozilik bildirish.',
+        's2_title' => 'Roʻyxatdan oʻtish va hisob',
+        's2_body' => '18 yoshdan oshgan foydalanuvchilar uchun. Bir kishi — bir hisob. Hisobni boshqalarga berish taqiqlanadi.',
+        's3_title' => 'Platforma roli',
+        's3_body' => 'Platforma — buyurtmachi va ijrochi oʻrtasidagi axborot vositachisi. Sifat va muddatlar uchun javobgar emas. MVP bosqichida toʻlovlar tomonlar oʻrtasida bevosita amalga oshadi.',
+        's4_title' => 'Kontent va xulq-atvor',
+        's4_body' => 'Noqonuniy xizmatlar, IP huquqlarini buzish, kontaktlarni javobni qabul qilishdan oldin almashish taqiqlanadi.',
+        's5_title' => 'Nizolar',
+        's5_body' => 'Har bir tomon platforma ichida nizo ocha oladi. Moderator 5 ish kuni ichida koʻrib chiqadi.',
+        's6_title' => 'Javobgarlik',
+        's6_body' => 'Platforma «borligicha» taqdim etiladi. Yoʻqotilgan foyda uchun javobgar emas.',
+        's7_title' => 'Shartlar oʻzgarishi',
+        's7_body' => 'Platforma shartlarni yangilashi mumkin. Muhim oʻzgarishlar /terms da eʼlon qilinadi.',
     ],
 
     'privacy' => [
         'title' => 'Maxfiylik siyosati',
-        'placeholder' => 'Toʻliq siyosat ommaviy versiya ishga tushirilgunga qadar eʼlon qilinadi.',
+        'last_updated' => 'Oxirgi yangilanish: :date',
+        'contact' => 'Shaxsiy maʼlumotlar boʻyicha email:',
+        's1_title' => 'Qanday maʼlumotlar yigʻiladi',
+        's1_body' => 'Ism, email, telefon, mintaqa, stavka, mutaxassisliklar, fayllar va texnik maʼlumotlar.',
+        's2_title' => 'Maqsadlar',
+        's2_body' => 'Autentifikatsiya, vazifa-ijrochi mosligi, shartnomalar va arbitraj, bildirishnomalar, firibgarlikdan himoya.',
+        's3_title' => 'Uchinchi tomonlarga uzatish',
+        's3_body' => 'Maʼlumotlar sotilmaydi. Faqat xizmatni ishlatish uchun zarur boʻlgan kontragentlarga uzatiladi.',
+        's4_title' => 'Saqlash va himoya',
+        's4_body' => 'Tasdiqlash hujjatlari shifrlangan S3 da saqlanadi. Parollar bcrypt-hashga aylantiriladi.',
+        's5_title' => 'Foydalanuvchi huquqlari',
+        's5_body' => 'Maʼlumotlarni koʻrish, eksport qilish va oʻchirish uchun support@artikul.uz ga yozing.',
+        's6_title' => 'Cookies va analitika',
+        's6_body' => 'Faqat zarur cookie. Plausible — cookie-siz analitika.',
+        's7_title' => 'Maʼlumotlar nazoratchisi',
+        's7_body' => 'Sobirov Ilyoskhon, Qoʻqon, Oʻzbekiston. privacy@artikul.uz.',
     ],
 
     'chat' => [
@@ -241,6 +271,74 @@ return [
         'stats' => ['total' => 'jami', 'active' => 'faol', 'earned' => 'topilgan'],
     ],
 
+    'saved_searches' => [
+        'save_button' => 'Qidiruvni saqlash',
+        'modal_title' => 'Qidiruvni saqlash',
+        'saved' => 'Qidiruv saqlandi.',
+        'my_title' => 'Saqlangan qidiruvlar',
+        'empty' => 'Saqlangan qidiruvlar yoʻq.',
+        'last_alert' => 'oxirgi xabarnoma :time',
+        'pause' => 'Pauza',
+        'resume' => 'Davom ettirish',
+        'confirm_delete' => 'Saqlangan qidiruvni oʻchirishni istaysizmi?',
+        'frequency' => ['instant' => 'Darhol', 'daily' => 'Kunlik', 'weekly' => 'Haftalik'],
+        'fields' => ['name' => 'Nomi', 'frequency' => 'Chastota', 'channels' => 'Kanallar'],
+    ],
+
+    'portfolio' => [
+        'title' => 'Portfolio',
+        'add' => 'Keys qoʻshish',
+        'edit' => 'Keysni tahrirlash',
+        'saved' => 'Keys saqlandi.',
+        'empty' => 'Hali keyslar yoʻq.',
+        'fields' => ['title' => 'Nomi', 'description' => 'Tavsif', 'cover' => 'Muqova', 'client_name' => 'Mijoz', 'completed_on' => 'Yakunlangan sana'],
+    ],
+
+    'services' => [
+        'title' => 'Xizmatlar',
+        'add' => 'Xizmat qoʻshish',
+        'edit' => 'Xizmatni tahrirlash',
+        'saved' => 'Xizmat saqlandi.',
+        'empty' => 'Xizmatlar yoʻq.',
+        'delivery_days' => '{1}1 kun|[2,*]:count kun',
+        'fields' => ['title' => 'Nomi', 'description' => 'Tavsif', 'price' => 'Narx', 'currency' => 'Valyuta', 'delivery_days' => 'Muddat (kun)'],
+    ],
+
+    'notifications_prefs' => [
+        'title' => 'Bildirishnomalar',
+        'saved' => 'Sozlamalar saqlandi.',
+        'frequency' => 'Chastota',
+        'instant' => 'Darhol',
+        'daily_digest' => 'Kunlik xulosa',
+        'important_only' => 'Faqat muhimlari',
+        'channels_title' => 'Kategoriyalar boʻyicha kanallar',
+        'category' => 'Kategoriya',
+        'cat' => [
+            'tasks' => 'Yangi vazifalar', 'proposals' => 'Javoblar', 'contracts' => 'Shartnomalar',
+            'chat' => 'Chat', 'reviews' => 'Sharhlar', 'disputes' => 'Nizolar',
+        ],
+    ],
+
+    'email' => [
+        'welcome' => [
+            'subject' => 'Artikulga xush kelibsiz',
+            'greeting' => 'Salom, :name!',
+            'body' => 'Artikul — marketpleys vazifalari uchun platforma. Boshlang‘ich bosqichda hammasi bepul.',
+            'cta' => 'Kabinetga oʻtish',
+            'footer' => 'Savollar bormi? Telegram @artikul_uz yoki hello@artikul.uz.',
+        ],
+        'onboarding_step1' => [
+            'subject' => 'Birinchi vazifani 2 daqiqada yarating',
+            'body' => 'Konstruktor orqali vazifani tasvirlang va bugun mos javoblar oling.',
+            'cta' => 'Vazifa yaratish',
+        ],
+        'reactivation' => [
+            'subject' => 'Sizni sog‘inyapmiz — Artikulda nima yangiliklar bor',
+            'body' => 'Sizning yoʻnalishingizda yangi vazifalar paydo boʻldi.',
+            'cta' => 'Katalogni ochish',
+        ],
+    ],
+
     'verification' => [
         'title' => 'Ijrochi tasdiqlash',
         'subtitle' => 'Hujjatlarni yuklang. 1–3 ish kuni ichida koʻrib chiqamiz.',
@@ -282,9 +380,18 @@ return [
         'unlinked' => 'Hisob uzildi.',
         'help' => 'Buyruqlar: /start, /link <kod>, /unlink, /help',
         'unknown' => 'Buyruq tushunarli emas. /help',
+        'not_linked' => 'Avval /link <kod> orqali hisobni ulang.',
+        'tasks_header' => 'Faol shartnomalar',
+        'tasks_empty' => 'Faol shartnomalar yoʻq.',
+        'proposals_header' => 'Kutayotgan javoblar',
+        'proposals_empty' => 'Kutayotgan javoblar yoʻq.',
     ],
 
     'reviews' => [
+        'list_title' => 'Sharhlar ({count})',
+        'empty' => 'Hali sharhlar yoʻq.',
+        'reply' => 'Javob',
+        'sort' => ['newest' => 'Yangi', 'rating_desc' => 'Yuqori reyting', 'rating_asc' => 'Past birinchi'],
         'leave_title' => 'Sharh qoldirish',
         'about_seller' => 'Ijrochini baholang.',
         'about_buyer' => 'Buyurtmachini baholang.',

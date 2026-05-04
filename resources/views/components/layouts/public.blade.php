@@ -17,6 +17,10 @@
 
     <link rel="canonical" href="{{ url()->current() }}">
 
+    @if (config('services.plausible.domain'))
+        <script defer data-domain="{{ config('services.plausible.domain') }}" src="{{ rtrim((string) config('services.plausible.host'), '/') }}/js/script.js"></script>
+    @endif
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased bg-white text-gray-900">

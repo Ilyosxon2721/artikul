@@ -33,6 +33,10 @@
             </div>
         @endif
 
+        <div class="mt-6 border-t border-gray-100 pt-6">
+            <livewire:reviews.reviews-list :userId="$user->id" :wire:key="'reviews-buyer-'.$user->id" />
+        </div>
+
         <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div class="p-3 bg-gray-50 rounded-lg">
                 <div class="text-lg font-semibold text-gray-800">{{ $user->buyerProfile->total_tasks_published }}</div>
