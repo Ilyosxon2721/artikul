@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\MarketplaceLandingController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Telegram\WebhookController as TelegramWebhookController;
 use App\Livewire\Chat\ChatPage;
@@ -20,6 +21,7 @@ use App\Livewire\Proposals\MyProposals;
 use App\Livewire\Proposals\TaskProposalsList;
 use App\Livewire\Public\PublicBuyerProfile;
 use App\Livewire\Public\PublicSellerProfile;
+use App\Livewire\Referrals\ReferralDashboard;
 use App\Livewire\Reviews\LeaveReview;
 use App\Livewire\Search\GlobalSearch;
 use App\Livewire\Sellers\SellerCatalog;
@@ -37,6 +39,9 @@ Route::view('/about', 'landing.about')->name('about');
 Route::view('/how-it-works', 'landing.how-it-works')->name('how-it-works');
 Route::view('/terms', 'landing.terms')->name('terms');
 Route::view('/privacy', 'landing.privacy')->name('privacy');
+Route::view('/for-sellers', 'landing.segments.sellers')->name('landing.sellers');
+Route::view('/for-buyers', 'landing.segments.buyers')->name('landing.buyers');
+Route::get('/marketplaces/{code}', MarketplaceLandingController::class)->name('landing.marketplace');
 
 // Health, sitemap & Telegram webhook
 Route::get('/health', HealthController::class)->name('health');
@@ -116,6 +121,9 @@ Route::middleware('auth')->group(function (): void {
 
     // Verification
     Route::get('profile/verification', SubmitVerification::class)->name('verification.show');
+
+    // Referrals
+    Route::get('dashboard/referrals', ReferralDashboard::class)->name('referrals.dashboard');
 });
 
 require __DIR__.'/auth.php';
