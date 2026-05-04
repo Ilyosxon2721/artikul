@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\Telegram\WebhookController as TelegramWebhookController;
 use App\Livewire\Chat\ChatPage;
 use App\Livewire\Contracts\ContractShow;
 use App\Livewire\Contracts\ContractsList;
@@ -13,6 +15,7 @@ use App\Livewire\Onboarding\SellerOnboarding;
 use App\Livewire\Profile\EditBuyerProfile;
 use App\Livewire\Profile\EditGeneralProfile;
 use App\Livewire\Profile\EditSellerProfile;
+use App\Livewire\Profile\TelegramLink;
 use App\Livewire\Proposals\MyProposals;
 use App\Livewire\Proposals\TaskProposalsList;
 use App\Livewire\Public\PublicBuyerProfile;
@@ -33,8 +36,10 @@ Route::view('/how-it-works', 'landing.how-it-works')->name('how-it-works');
 Route::view('/terms', 'landing.terms')->name('terms');
 Route::view('/privacy', 'landing.privacy')->name('privacy');
 
-// Health
+// Health, sitemap & Telegram webhook
 Route::get('/health', HealthController::class)->name('health');
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::post('/telegram/webhook', TelegramWebhookController::class)->name('telegram.webhook');
 
 // Catalogs
 Route::get('/tasks', TaskCatalog::class)->name('tasks.index');
@@ -82,6 +87,7 @@ Route::middleware('auth')->group(function (): void {
     Route::get('profile/general', EditGeneralProfile::class)->name('profile.general');
     Route::get('profile/buyer', EditBuyerProfile::class)->name('profile.buyer.edit');
     Route::get('profile/seller', EditSellerProfile::class)->name('profile.seller.edit');
+    Route::get('profile/notifications', TelegramLink::class)->name('profile.telegram');
 
     // Mode required prompt (placeholder)
     Route::get('mode/{mode}/required', function (string $mode) {

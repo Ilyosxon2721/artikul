@@ -206,6 +206,23 @@ return [
         'dispute_resolved' => ['subject' => 'Nizo hal qilindi', 'body' => 'Yechim: :status.'],
     ],
 
+    'telegram' => [
+        'title' => 'Telegram bildirishnomalari',
+        'subtitle' => 'Kod yarating, botni oching va kodni botga yuboring.',
+        'generate_code' => 'Kod yaratish',
+        'code_label' => 'Sizning kodingiz',
+        'open_bot' => 'Botni ochish',
+        'already_linked' => 'Telegram allaqachon ulangan.',
+        'unlink' => 'Uzish',
+        'welcome' => 'Salom! Men Artikul botiman. Hisobni ulash uchun /link <kod> yuboring.',
+        'link_usage' => 'Foydalanish: /link <kod>',
+        'link_failed' => 'Kod topilmadi yoki muddati oʻtgan.',
+        'linked' => ':name hisobi ulandi.',
+        'unlinked' => 'Hisob uzildi.',
+        'help' => 'Buyruqlar: /start, /link <kod>, /unlink, /help',
+        'unknown' => 'Buyruq tushunarli emas. /help',
+    ],
+
     'reviews' => [
         'leave_title' => 'Sharh qoldirish',
         'about_seller' => 'Ijrochini baholang.',

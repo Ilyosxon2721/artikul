@@ -224,6 +224,23 @@ return [
         'dispute_resolved' => ['subject' => 'Dispute resolved', 'body' => 'Resolution: :status.'],
     ],
 
+    'telegram' => [
+        'title' => 'Telegram notifications',
+        'subtitle' => 'Generate a code, open the bot and send it in chat to link your account.',
+        'generate_code' => 'Generate code',
+        'code_label' => 'Your code',
+        'open_bot' => 'Open bot',
+        'already_linked' => 'Telegram is already linked.',
+        'unlink' => 'Unlink',
+        'welcome' => 'Hi! I am the Artikul bot. Send /link <code> to attach your account.',
+        'link_usage' => 'Usage: /link <code>',
+        'link_failed' => 'Code not found or expired.',
+        'linked' => 'Account :name linked.',
+        'unlinked' => 'Account unlinked.',
+        'help' => 'Commands: /start, /link <code>, /unlink, /help',
+        'unknown' => "I don't know that command. /help",
+    ],
+
     'reviews' => [
         'leave_title' => 'Leave a review',
         'about_seller' => 'Rate the seller for this contract.',
