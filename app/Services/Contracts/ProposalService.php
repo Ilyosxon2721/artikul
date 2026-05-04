@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Notifications\ContractStartedNotification;
 use App\Notifications\ProposalAcceptedNotification;
 use App\Notifications\ProposalRejectedNotification;
+use App\Services\Chat\MessagingService;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
@@ -143,6 +144,17 @@ class ProposalService
 
             $proposal->seller?->notify(new ProposalAcceptedNotification($proposal, $contract));
             $proposal->task?->buyer?->notify(new ContractStartedNotification($contract));
+
+            // Open (or unlock) the chat between buyer and seller.
+            /** @var \App\Models\User|null $buyer */
+            $buyer = $task->buyer;
+            /** @var \App\Models\User|null $seller */
+            $seller = $proposal->seller;
+            if ($buyer !== null && $seller !== null) {
+                $messaging = app(MessagingService::class);
+                $conversation = $messaging->openDirect($buyer, $seller, $task, $contract->id);
+                $messaging->unlock($conversation, $contract->id);
+            }
 
             return $contract;
         });

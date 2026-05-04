@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HealthController;
+use App\Livewire\Chat\ChatPage;
 use App\Livewire\Contracts\ContractShow;
 use App\Livewire\Contracts\ContractsList;
 use App\Livewire\Landing\Home;
@@ -93,6 +94,10 @@ Route::middleware('auth')->group(function (): void {
     Route::get('tasks/{slug}/proposals', TaskProposalsList::class)->name('contracts.proposals.task');
     Route::get('contracts', ContractsList::class)->name('contracts.index');
     Route::get('contracts/{contract}', ContractShow::class)->name('contracts.show');
+
+    // Chat
+    Route::get('messages', ChatPage::class)->name('chat.index');
+    Route::get('messages/{conversation}', ChatPage::class)->name('chat.show');
 });
 
 require __DIR__.'/auth.php';

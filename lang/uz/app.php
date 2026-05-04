@@ -134,6 +134,16 @@ return [
         'placeholder' => 'Toʻliq siyosat ommaviy versiya ishga tushirilgunga qadar eʼlon qilinadi.',
     ],
 
+    'chat' => [
+        'search_placeholder' => 'Suhbatlarni qidirish…',
+        'empty_conversations' => 'Sizda hali suhbatlar yoʻq.',
+        'pick_conversation' => 'Suhbatni tanlang.',
+        'placeholder' => 'Xabar…',
+        'send' => 'Yuborish',
+        'contact_filter_active' => 'Shartnoma boshlangunga qadar kontaktlar bloklangan',
+        'filtered_replacement' => '[platforma tomonidan bloklangan]',
+    ],
+
     'proposals' => [
         'my_title' => 'Mening javoblarim',
         'modal_title' => 'Vazifaga javob berish',

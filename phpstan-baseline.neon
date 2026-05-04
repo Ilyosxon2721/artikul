@@ -201,7 +201,7 @@ parameters:
 		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$buyer\.$#'
 			identifier: property.notFound
-			count: 1
+			count: 2
 			path: app/Services/Contracts/ProposalService.php
 
 		-

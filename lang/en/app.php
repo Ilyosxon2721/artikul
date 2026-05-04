@@ -134,6 +134,16 @@ return [
         'placeholder' => 'Full privacy policy will be published before the public launch.',
     ],
 
+    'chat' => [
+        'search_placeholder' => 'Search conversations…',
+        'empty_conversations' => 'You have no conversations yet.',
+        'pick_conversation' => 'Pick a conversation to start chatting.',
+        'placeholder' => 'Message…',
+        'send' => 'Send',
+        'contact_filter_active' => 'Contact info is blocked until the contract starts',
+        'filtered_replacement' => '[blocked by the platform: you can exchange contacts after a proposal is accepted]',
+    ],
+
     'proposals' => [
         'my_title' => 'My proposals',
         'modal_title' => 'Apply to task',
