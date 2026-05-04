@@ -6,6 +6,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Enums\VerificationStatus;
 use App\Filament\Admin\Resources\VerificationResource\Pages;
+use App\Models\User;
 use App\Models\Verification;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -74,7 +75,7 @@ class VerificationResource extends Resource
                             'reviewed_at' => now(),
                         ])->save();
 
-                        /** @var \App\Models\User|null $user */
+                        /** @var User|null $user */
                         $user = $v->user;
                         $user?->sellerProfile?->forceFill([
                             'is_verified' => true,

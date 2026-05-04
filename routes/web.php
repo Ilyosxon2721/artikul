@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HealthController;
+use App\Livewire\Contracts\ContractShow;
+use App\Livewire\Contracts\ContractsList;
 use App\Livewire\Landing\Home;
 use App\Livewire\Onboarding\SellerOnboarding;
 use App\Livewire\Profile\EditBuyerProfile;
 use App\Livewire\Profile\EditGeneralProfile;
 use App\Livewire\Profile\EditSellerProfile;
+use App\Livewire\Proposals\MyProposals;
+use App\Livewire\Proposals\TaskProposalsList;
 use App\Livewire\Public\PublicBuyerProfile;
 use App\Livewire\Public\PublicSellerProfile;
 use App\Livewire\Sellers\SellerCatalog;
@@ -83,6 +87,12 @@ Route::middleware('auth')->group(function (): void {
 
     // Seller onboarding wizard
     Route::get('onboarding/seller', SellerOnboarding::class)->name('onboarding.seller');
+
+    // Proposals & contracts
+    Route::get('dashboard/proposals', MyProposals::class)->name('proposals.mine');
+    Route::get('tasks/{slug}/proposals', TaskProposalsList::class)->name('contracts.proposals.task');
+    Route::get('contracts', ContractsList::class)->name('contracts.index');
+    Route::get('contracts/{contract}', ContractShow::class)->name('contracts.show');
 });
 
 require __DIR__.'/auth.php';

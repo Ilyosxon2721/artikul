@@ -1,5 +1,12 @@
 @php($profile = $user->sellerProfile)
 <div class="max-w-5xl mx-auto px-4 py-8">
+    @auth
+        @if (auth()->id() !== $user->id)
+            <div class="mb-4 flex justify-end">
+                <livewire:proposals.invite-seller :seller="$user" :wire:key="'invite-'.$user->id" />
+            </div>
+        @endif
+    @endauth
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="md:col-span-2 space-y-6">
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

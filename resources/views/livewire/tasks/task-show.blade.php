@@ -83,20 +83,21 @@
                 </div>
 
                 @if ($canRespond)
-                    <button type="button" disabled class="w-full px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg opacity-70 cursor-not-allowed" title="{{ __('app.tasks.respond_coming_soon') }}">
-                        {{ __('app.tasks.actions.respond') }}
-                    </button>
-                @elseif ($canEdit)
+                    <livewire:proposals.apply-form :task="$task" />
+                @endif
+                @if ($canEdit)
                     <a href="{{ route('tasks.edit', $task->slug) }}" wire:navigate class="block text-center w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg">
                         {{ __('app.actions.edit') }}
                     </a>
-                @else
-                    @guest
-                        <a href="{{ route('login') }}" class="block text-center w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg">
-                            {{ __('app.tasks.login_to_respond') }}
-                        </a>
-                    @endguest
+                    <a href="{{ route('contracts.proposals.task', $task->slug) }}" class="block text-center w-full px-4 py-2 mt-2 bg-white border border-gray-200 text-gray-700 text-sm rounded-lg hover:bg-gray-50">
+                        {{ __('app.tasks.actions.view_proposals') }} ({{ $task->proposals_count }})
+                    </a>
                 @endif
+                @guest
+                    <a href="{{ route('login') }}" class="block text-center w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg">
+                        {{ __('app.tasks.login_to_respond') }}
+                    </a>
+                @endguest
             </div>
 
             <div class="bg-white border border-gray-100 rounded-2xl p-6">
