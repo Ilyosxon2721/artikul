@@ -7,6 +7,7 @@ use App\Http\Controllers\HealthController;
 use App\Livewire\Chat\ChatPage;
 use App\Livewire\Contracts\ContractShow;
 use App\Livewire\Contracts\ContractsList;
+use App\Livewire\Disputes\OpenDispute;
 use App\Livewire\Landing\Home;
 use App\Livewire\Onboarding\SellerOnboarding;
 use App\Livewire\Profile\EditBuyerProfile;
@@ -16,6 +17,7 @@ use App\Livewire\Proposals\MyProposals;
 use App\Livewire\Proposals\TaskProposalsList;
 use App\Livewire\Public\PublicBuyerProfile;
 use App\Livewire\Public\PublicSellerProfile;
+use App\Livewire\Reviews\LeaveReview;
 use App\Livewire\Sellers\SellerCatalog;
 use App\Livewire\Tasks\TaskCatalog;
 use App\Livewire\Tasks\TaskShow;
@@ -98,6 +100,10 @@ Route::middleware('auth')->group(function (): void {
     // Chat
     Route::get('messages', ChatPage::class)->name('chat.index');
     Route::get('messages/{conversation}', ChatPage::class)->name('chat.show');
+
+    // Reviews & disputes
+    Route::get('contracts/{contract}/review', LeaveReview::class)->name('reviews.create');
+    Route::get('contracts/{contract}/dispute', OpenDispute::class)->name('disputes.create');
 });
 
 require __DIR__.'/auth.php';

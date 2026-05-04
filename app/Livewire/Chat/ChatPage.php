@@ -6,6 +6,7 @@ namespace App\Livewire\Chat;
 
 use App\Models\Conversation;
 use App\Models\Message;
+use App\Models\User;
 use App\Services\Chat\MessagingService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +71,7 @@ class ChatPage extends Component
         if ($this->search !== '') {
             $term = mb_strtolower($this->search);
             $conversations = $conversations->filter(function (Conversation $c) use ($term, $user) {
-                /** @var \App\Models\User|null $other */
+                /** @var User|null $other */
                 $other = $c->participants->firstWhere('id', '!=', $user->id);
 
                 return $other !== null && mb_stripos($other->name, $term) !== false;

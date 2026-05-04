@@ -218,6 +218,46 @@ return [
         'contract_started' => ['subject' => 'Contract started', 'body' => 'Contract on “:task” has started.'],
         'invitation' => ['subject' => 'You were invited', 'body' => 'You were invited to “:task”.'],
         'milestone_submitted' => ['subject' => 'Milestone submitted', 'body' => 'Seller submitted “:title”.'],
+        'review_request' => ['subject' => 'Leave a review', 'body' => 'The contract is complete. Leave a review within 14 days.'],
+        'review_published' => ['subject' => 'New review published', 'body' => 'A review about you has been published. You may reply once.'],
+        'dispute_opened' => ['subject' => 'Dispute opened', 'body' => 'A dispute has been opened on one of your contracts.'],
+        'dispute_resolved' => ['subject' => 'Dispute resolved', 'body' => 'Resolution: :status.'],
+    ],
+
+    'reviews' => [
+        'leave_title' => 'Leave a review',
+        'about_seller' => 'Rate the seller for this contract.',
+        'about_buyer' => 'Rate the buyer for this contract.',
+        'comment_hint' => 'Min 30, max 1500 characters.',
+        'blind_method_hint' => 'Your review will be published once both parties have submitted theirs, or after 14 days.',
+        'saved' => 'Review saved. Will be published via blind method.',
+        'contract_not_completed' => 'You can review only completed contracts.',
+        'yes' => 'Yes',
+        'no' => 'No',
+        'maybe' => 'Maybe',
+        'fields' => [
+            'rating_overall' => 'Overall rating',
+            'rating_quality' => 'Quality',
+            'rating_communication' => 'Communication',
+            'rating_deadline' => 'Deadlines',
+            'rating_professionalism' => 'Professionalism',
+            'rating_clarity' => 'Brief clarity',
+            'rating_payment_timeliness' => 'On-time payment',
+            'comment' => 'Comment',
+            'would_work_again' => 'Would work again?',
+        ],
+    ],
+
+    'disputes' => [
+        'open_title' => 'Open a dispute',
+        'subtitle' => 'Describe the issue. An Artikul moderator will review within 5 business days.',
+        'opened' => 'Dispute opened. We will respond within 5 business days.',
+        'fields' => ['reason' => 'Reason', 'description' => 'Description'],
+        'reasons' => [
+            'quality' => 'Quality of work', 'deadline' => 'Missed deadline', 'communication' => 'Communication issues',
+            'scope' => 'Scope changes', 'other' => 'Other',
+        ],
+        'actions' => ['open' => 'Open dispute'],
     ],
 
     'tasks' => [

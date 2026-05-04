@@ -8,6 +8,7 @@ use App\Enums\ContractStatus;
 use App\Enums\TaskStatus;
 use App\Models\Contract;
 use App\Models\User;
+use App\Notifications\ReviewRequestNotification;
 use RuntimeException;
 
 class ContractService
@@ -49,6 +50,9 @@ class ContractService
         if ($task !== null) {
             $task->forceFill(['status' => TaskStatus::Completed])->save();
         }
+
+        $contract->buyer?->notify(new ReviewRequestNotification($contract));
+        $contract->seller?->notify(new ReviewRequestNotification($contract));
 
         return $contract;
     }

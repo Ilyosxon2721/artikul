@@ -200,6 +200,40 @@ return [
         'contract_started' => ['subject' => 'Shartnoma boshlandi', 'body' => '«:task» bo‘yicha shartnoma boshlandi.'],
         'invitation' => ['subject' => 'Sizni taklif qilishdi', 'body' => '«:task» ga taklif qilingansiz.'],
         'milestone_submitted' => ['subject' => 'Bosqich topshirildi', 'body' => 'Ijrochi «:title» bosqichini topshirdi.'],
+        'review_request' => ['subject' => 'Sharh qoldiring', 'body' => '14 kun ichida sharh qoldiring.'],
+        'review_published' => ['subject' => 'Yangi sharh', 'body' => 'Sizga sharh yozildi. Bir marta javob bera olasiz.'],
+        'dispute_opened' => ['subject' => 'Nizo ochildi', 'body' => 'Sizning shartnomalaringizdan birida nizo ochildi.'],
+        'dispute_resolved' => ['subject' => 'Nizo hal qilindi', 'body' => 'Yechim: :status.'],
+    ],
+
+    'reviews' => [
+        'leave_title' => 'Sharh qoldirish',
+        'about_seller' => 'Ijrochini baholang.',
+        'about_buyer' => 'Buyurtmachini baholang.',
+        'comment_hint' => 'Eng kami 30, eng koʻpi 1500 belgi.',
+        'blind_method_hint' => 'Sharh ikkala tomon yozgandan keyin yoki 14 kundan soʻng eʼlon qilinadi.',
+        'saved' => 'Sharh saqlandi.',
+        'contract_not_completed' => 'Faqat yakunlangan shartnomalarga sharh yozish mumkin.',
+        'yes' => 'Ha', 'no' => 'Yoʻq', 'maybe' => 'Balki',
+        'fields' => [
+            'rating_overall' => 'Umumiy baho', 'rating_quality' => 'Sifat',
+            'rating_communication' => 'Muloqot', 'rating_deadline' => 'Muddat',
+            'rating_professionalism' => 'Professionallik', 'rating_clarity' => 'TZ aniqligi',
+            'rating_payment_timeliness' => 'Toʻlov oʻz vaqtida', 'comment' => 'Izoh',
+            'would_work_again' => 'Yana ishlaysizmi?',
+        ],
+    ],
+
+    'disputes' => [
+        'open_title' => 'Nizo ochish',
+        'subtitle' => 'Vaziyatni tasvirlang. Moderator 5 ish kuni ichida koʻrib chiqadi.',
+        'opened' => 'Nizo ochildi.',
+        'fields' => ['reason' => 'Sabab', 'description' => 'Tavsif'],
+        'reasons' => [
+            'quality' => 'Ish sifati', 'deadline' => 'Muddat', 'communication' => 'Muloqot',
+            'scope' => 'Hajm oʻzgarishi', 'other' => 'Boshqa',
+        ],
+        'actions' => ['open' => 'Nizoni ochish'],
     ],
 
     'tasks' => [

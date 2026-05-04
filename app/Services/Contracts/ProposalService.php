@@ -146,9 +146,9 @@ class ProposalService
             $proposal->task?->buyer?->notify(new ContractStartedNotification($contract));
 
             // Open (or unlock) the chat between buyer and seller.
-            /** @var \App\Models\User|null $buyer */
+            /** @var User|null $buyer */
             $buyer = $task->buyer;
-            /** @var \App\Models\User|null $seller */
+            /** @var User|null $seller */
             $seller = $proposal->seller;
             if ($buyer !== null && $seller !== null) {
                 $messaging = app(MessagingService::class);

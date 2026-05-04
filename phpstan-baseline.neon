@@ -85,6 +85,12 @@ parameters:
 			path: app/Livewire/Contracts/ContractShow.php
 
 		-
+			message: '#^Call to function abort_unless\(\) with bool and 403 will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Livewire/Disputes/OpenDispute.php
+
+		-
 			message: '#^Using nullsafe property access "\?\-\>current_mode" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1
@@ -127,6 +133,12 @@ parameters:
 			path: app/Livewire/Proposals/ApplyForm.php
 
 		-
+			message: '#^Call to function abort_unless\(\) with bool and 403 will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Livewire/Reviews/LeaveReview.php
+
+		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
 			identifier: property.notFound
 			count: 1
@@ -137,6 +149,12 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ContractStartedNotification.php
+
+		-
+			message: '#^Using nullsafe method call on non\-nullable type App\\Enums\\DisputeStatus\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/DisputeResolvedNotification.php
 
 		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$slug\.$#'
@@ -197,6 +215,12 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ProposalRejectedNotification.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: app/Services/Contracts/ContractService.php
 
 		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$buyer\.$#'
@@ -233,3 +257,39 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Services/Contracts/ProposalService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$buyer\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Reviews/DisputeService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$seller\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Reviews/DisputeService.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: app/Services/Reviews/DisputeService.php
+
+		-
+			message: '#^Access to an undefined property App\\Models\\Review\:\:\$avg_rating\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/Reviews/ReviewService.php
+
+		-
+			message: '#^Access to an undefined property App\\Models\\Review\:\:\$count\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/Reviews/ReviewService.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Services/Reviews/ReviewService.php
