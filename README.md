@@ -123,6 +123,31 @@ vendor/bin/pest           # тесты
 2. **Фаза 2 (3–4 недели)** — сделки и коммуникация: отклики, контракты, чат с Reverb, отзывы blind-method, споры, Telegram-бот.
 3. **Фаза 3 (2–3 недели)** — качество и рост: верификация, Meilisearch с фасетами, видеозвонки Jitsi, реферальная программа, публичная статистика.
 
+## Документация
+
+- [docs/phase-1-qa-checklist.md](docs/phase-1-qa-checklist.md) — каркас.
+- [docs/phase-2-qa-checklist.md](docs/phase-2-qa-checklist.md) — сделки и коммуникация.
+- [docs/phase-3-qa-checklist.md](docs/phase-3-qa-checklist.md) — качество и запуск.
+- [docs/admin-guide.md](docs/admin-guide.md) — гайд для админов.
+- [docs/dispute-resolution-playbook.md](docs/dispute-resolution-playbook.md) — арбитраж.
+- [docs/support-faq.md](docs/support-faq.md) — типовые ответы поддержки.
+- [docs/launch-materials.md](docs/launch-materials.md) — пресс-релиз и посты.
+
+## Деплой
+
+```bash
+# первый запуск на VPS
+php artisan migrate --force
+php artisan db:seed --class=MarketplaceSeeder --force
+php artisan db:seed --class=CategorySeeder --force
+php artisan db:seed --class=SpecializationSeeder --force
+php artisan artikul:make-admin you@artikul.uz --super
+php artisan storage:link
+
+# обычный релиз
+./deploy.sh
+```
+
 ## Лицензия
 
 Проприетарный софт. © 2026 Sobirov Ilyoskhon. Все права защищены.
