@@ -21,10 +21,12 @@ use App\Livewire\Proposals\TaskProposalsList;
 use App\Livewire\Public\PublicBuyerProfile;
 use App\Livewire\Public\PublicSellerProfile;
 use App\Livewire\Reviews\LeaveReview;
+use App\Livewire\Search\GlobalSearch;
 use App\Livewire\Sellers\SellerCatalog;
 use App\Livewire\Tasks\TaskCatalog;
 use App\Livewire\Tasks\TaskShow;
 use App\Livewire\Tasks\TaskWizard;
+use App\Livewire\Verification\SubmitVerification;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -41,9 +43,10 @@ Route::get('/health', HealthController::class)->name('health');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::post('/telegram/webhook', TelegramWebhookController::class)->name('telegram.webhook');
 
-// Catalogs
+// Catalogs & search
 Route::get('/tasks', TaskCatalog::class)->name('tasks.index');
 Route::get('/sellers', SellerCatalog::class)->name('sellers.index');
+Route::get('/search', GlobalSearch::class)->name('search');
 
 // Authenticated task management — must come BEFORE /tasks/{slug} catch-all
 Route::middleware('auth')->group(function (): void {
@@ -110,6 +113,9 @@ Route::middleware('auth')->group(function (): void {
     // Reviews & disputes
     Route::get('contracts/{contract}/review', LeaveReview::class)->name('reviews.create');
     Route::get('contracts/{contract}/dispute', OpenDispute::class)->name('disputes.create');
+
+    // Verification
+    Route::get('profile/verification', SubmitVerification::class)->name('verification.show');
 });
 
 require __DIR__.'/auth.php';

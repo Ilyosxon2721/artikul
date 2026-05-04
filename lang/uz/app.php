@@ -206,6 +206,32 @@ return [
         'dispute_resolved' => ['subject' => 'Nizo hal qilindi', 'body' => 'Yechim: :status.'],
     ],
 
+    'verification' => [
+        'title' => 'Ijrochi tasdiqlash',
+        'subtitle' => 'Hujjatlarni yuklang. 1–3 ish kuni ichida koʻrib chiqamiz.',
+        'submitted' => 'Soʻrov yuborildi.',
+        'current_status' => 'Soʻrov holati',
+        'id_document_hint' => 'Pasport yoki ID karta.',
+        'marketplace_hint' => 'Marketpleys kabineti skrinshotlari (moliya ma\'lumotlari yashirilgan).',
+        'passport_hint' => 'Faqat dublikatlardan himoya qilish uchun ishlatiladi.',
+        'status' => ['pending' => 'Kutilmoqda', 'approved' => 'Tasdiqlangan', 'rejected' => 'Rad etilgan'],
+        'fields' => [
+            'id_document' => 'Hujjat', 'selfie' => 'Hujjat bilan selfi',
+            'marketplace_screenshots' => 'Marketpleys skrinshotlari',
+            'recommendation' => 'Tavsiya (ixtiyoriy)',
+            'passport_number' => 'Hujjat raqami',
+        ],
+        'actions' => ['submit' => 'Yuborish'],
+    ],
+
+    'search' => [
+        'title' => 'Qidiruv',
+        'placeholder' => 'Soʻrov kiriting…',
+        'start_typing' => 'Natijalarni koʻrish uchun yozishni boshlang.',
+        'no_results' => 'Hech narsa topilmadi.',
+        'tabs' => ['tasks' => 'Vazifalar', 'sellers' => 'Ijrochilar'],
+    ],
+
     'telegram' => [
         'title' => 'Telegram bildirishnomalari',
         'subtitle' => 'Kod yarating, botni oching va kodni botga yuboring.',

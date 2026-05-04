@@ -224,6 +224,33 @@ return [
         'dispute_resolved' => ['subject' => 'Dispute resolved', 'body' => 'Resolution: :status.'],
     ],
 
+    'verification' => [
+        'title' => 'Seller verification',
+        'subtitle' => 'Upload your documents. An Artikul moderator will review within 1–3 business days.',
+        'submitted' => 'Application submitted.',
+        'current_status' => 'Application status',
+        'id_document_hint' => 'Passport or national ID.',
+        'marketplace_hint' => 'Marketplace dashboard screenshots with financials masked.',
+        'passport_hint' => 'Used only to prevent duplicate accounts.',
+        'status' => ['pending' => 'Pending', 'approved' => 'Approved', 'rejected' => 'Rejected'],
+        'fields' => [
+            'id_document' => 'Government ID',
+            'selfie' => 'Selfie with the document',
+            'marketplace_screenshots' => 'Marketplace dashboard screenshots',
+            'recommendation' => 'Recommendation (optional)',
+            'passport_number' => 'Document number',
+        ],
+        'actions' => ['submit' => 'Submit for review'],
+    ],
+
+    'search' => [
+        'title' => 'Search',
+        'placeholder' => 'Type your query…',
+        'start_typing' => 'Start typing to see results.',
+        'no_results' => 'No results.',
+        'tabs' => ['tasks' => 'Tasks', 'sellers' => 'Freelancers'],
+    ],
+
     'telegram' => [
         'title' => 'Telegram notifications',
         'subtitle' => 'Generate a code, open the bot and send it in chat to link your account.',
