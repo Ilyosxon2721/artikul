@@ -41,7 +41,7 @@
                 </div>
 
                 @if ($profile->bio)
-                    <div class="prose prose-sm max-w-none mt-6 text-gray-700">{!! nl2br(e($profile->bio)) !!}</div>
+                    <div class="prose prose-sm max-w-none mt-6 text-gray-700">{!! \App\Support\Markdown::render($profile->bio) !!}</div>
                 @endif
             </div>
 

@@ -450,6 +450,7 @@ return [
         'search_placeholder' => 'Поиск по контактам…',
         'empty_conversations' => 'У вас пока нет переписок.',
         'pick_conversation' => 'Выберите беседу слева, чтобы начать переписку.',
+        'empty_thread' => 'Сообщений пока нет — напишите первым.',
         'placeholder' => 'Сообщение…',
         'send' => 'Отправить',
         'contact_filter_active' => 'Контакты в чате блокируются до начала сделки',
@@ -529,6 +530,7 @@ return [
             'overview' => 'Обзор',
             'milestones' => 'Этапы',
             'hours' => 'Часы',
+            'chat' => 'Чат',
             'history' => 'История',
         ],
         'fields' => [

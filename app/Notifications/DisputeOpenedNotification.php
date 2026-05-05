@@ -11,13 +11,15 @@ use Illuminate\Notifications\Notification;
 
 class DisputeOpenedNotification extends Notification
 {
-    use Queueable;
+    use PreferenceAware, Queueable;
+
+    protected ?string $category = 'disputes';
 
     public function __construct(public readonly Dispute $dispute) {}
 
     public function via(object $notifiable): array
     {
-        return ['database', 'mail'];
+        return $this->channelsFor($notifiable);
     }
 
     public function toMail(object $notifiable): MailMessage

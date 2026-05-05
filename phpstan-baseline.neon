@@ -7,6 +7,12 @@ parameters:
 			path: app/Console/Commands/RunSavedSearchAlerts.php
 
 		-
+			message: '#^Right side of \|\| is always true\.$#'
+			identifier: booleanOr.rightAlwaysTrue
+			count: 1
+			path: app/Filament/Admin/Widgets/SystemHealthWidget.php
+
+		-
 			message: '#^Using nullsafe method call on non\-nullable type Laravel\\Sanctum\\PersonalAccessToken\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1
@@ -115,6 +121,12 @@ parameters:
 			path: app/Livewire/Contracts/ContractShow.php
 
 		-
+			message: '#^Method App\\Livewire\\Contracts\\ContractShow\:\:contractConversation\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/Livewire/Contracts/ContractShow.php
+
+		-
 			message: '#^Call to function abort_unless\(\) with bool and 403 will always evaluate to true\.$#'
 			identifier: function.alreadyNarrowedType
 			count: 1
@@ -211,8 +223,26 @@ parameters:
 			path: app/Models/Task.php
 
 		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ContractStartedNotification.php
+
+		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
 			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ContractStartedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\ContractStartedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/ContractStartedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ContractStartedNotification.php
 
@@ -221,6 +251,36 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ContractStartedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/DisputeOpenedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\DisputeOpenedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/DisputeOpenedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/DisputeOpenedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/DisputeResolvedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\DisputeResolvedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/DisputeResolvedNotification.php
 
 		-
 			message: '#^Using nullsafe method call on non\-nullable type App\\Enums\\DisputeStatus\. Use \-\> instead\.$#'
@@ -229,6 +289,18 @@ parameters:
 			path: app/Notifications/DisputeResolvedNotification.php
 
 		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/DisputeResolvedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/InvitationReceivedNotification.php
+
+		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$slug\.$#'
 			identifier: property.notFound
 			count: 1
@@ -241,32 +313,104 @@ parameters:
 			path: app/Notifications/InvitationReceivedNotification.php
 
 		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\InvitationReceivedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/InvitationReceivedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/InvitationReceivedNotification.php
+
+		-
 			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/InvitationReceivedNotification.php
 
 		-
-			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$slug\.$#'
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/MilestoneSubmittedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\MilestoneSubmittedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/MilestoneSubmittedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/MilestoneSubmittedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
 			identifier: property.notFound
 			count: 1
 			path: app/Notifications/NewProposalNotification.php
 
 		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$slug\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Notifications/NewProposalNotification.php
+
+		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
 			identifier: property.notFound
+			count: 2
+			path: app/Notifications/NewProposalNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\NewProposalNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/NewProposalNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/NewProposalNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>slug" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/NewProposalNotification.php
 
 		-
 			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
-			count: 1
+			count: 2
 			path: app/Notifications/NewProposalNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ProposalAcceptedNotification.php
 
 		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
 			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ProposalAcceptedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\ProposalAcceptedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/ProposalAcceptedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ProposalAcceptedNotification.php
 
@@ -277,8 +421,26 @@ parameters:
 			path: app/Notifications/ProposalAcceptedNotification.php
 
 		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ProposalRejectedNotification.php
+
+		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
 			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ProposalRejectedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\ProposalRejectedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/ProposalRejectedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ProposalRejectedNotification.php
 
@@ -287,6 +449,42 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Notifications/ProposalRejectedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ReviewPublishedNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\ReviewPublishedNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/ReviewPublishedNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/ReviewPublishedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$notification_preferences\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Notifications/ReviewRequestNotification.php
+
+		-
+			message: '#^Call to function property_exists\(\) with \$this\(App\\Notifications\\ReviewRequestNotification\) and ''category'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Notifications/ReviewRequestNotification.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>notification_preferences" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Notifications/ReviewRequestNotification.php
 
 		-
 			message: '#^Using nullsafe property access "\?\-\>value" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'

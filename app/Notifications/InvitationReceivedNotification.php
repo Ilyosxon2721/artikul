@@ -11,13 +11,15 @@ use Illuminate\Notifications\Notification;
 
 class InvitationReceivedNotification extends Notification
 {
-    use Queueable;
+    use PreferenceAware, Queueable;
+
+    protected ?string $category = 'proposals';
 
     public function __construct(public readonly Proposal $proposal) {}
 
     public function via(object $notifiable): array
     {
-        return ['database', 'mail'];
+        return $this->channelsFor($notifiable);
     }
 
     public function toMail(object $notifiable): MailMessage
