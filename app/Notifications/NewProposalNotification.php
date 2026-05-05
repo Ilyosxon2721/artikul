@@ -11,13 +11,21 @@ use Illuminate\Notifications\Notification;
 
 class NewProposalNotification extends Notification
 {
-    use Queueable;
+    use PreferenceAware, Queueable;
+
+    protected ?string $category = 'proposals';
 
     public function __construct(public readonly Proposal $proposal) {}
 
     public function via(object $notifiable): array
     {
-        return ['database', 'mail'];
+        return $this->channelsFor($notifiable);
+    }
+
+    public function toTelegram(object $notifiable): array
+    {
+        return ['text' => '🆕 '.__('app.notifications.new_proposal.body', ['task' => $this->proposal->task?->title ?? ''])
+            ."\n".url('/tasks/'.($this->proposal->task?->slug ?? ''))];
     }
 
     public function toMail(object $notifiable): MailMessage

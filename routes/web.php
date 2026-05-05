@@ -102,8 +102,8 @@ Volt::route('password/expired', 'pages.auth.password-expired')
     ->middleware('auth')
     ->name('password.expired');
 
-Route::middleware('auth')->group(function (): void {
-    Route::view('dashboard', 'dashboard')->middleware('verified')->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function (): void {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
 
     // Profile management
     Route::redirect('profile', 'profile/general')->name('profile');

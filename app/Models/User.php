@@ -83,6 +83,15 @@ class User extends Authenticatable implements FilamentUser
         return $this->two_factor_confirmed_at !== null && $this->two_factor_secret !== null;
     }
 
+    /**
+     * Phone-only accounts count as verified once they confirm their phone via SMS.
+     */
+    public function hasVerifiedEmail(): bool
+    {
+        return $this->email_verified_at !== null
+            || ($this->email === null && $this->phone_verified_at !== null);
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->is_admin && ! $this->is_banned;

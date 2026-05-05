@@ -11,13 +11,15 @@ use Illuminate\Notifications\Notification;
 
 class ContractStartedNotification extends Notification
 {
-    use Queueable;
+    use PreferenceAware, Queueable;
+
+    protected ?string $category = 'contracts';
 
     public function __construct(public readonly Contract $contract) {}
 
     public function via(object $notifiable): array
     {
-        return ['database', 'mail'];
+        return $this->channelsFor($notifiable);
     }
 
     public function toMail(object $notifiable): MailMessage

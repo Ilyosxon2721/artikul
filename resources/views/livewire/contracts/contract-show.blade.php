@@ -29,7 +29,7 @@
 
     {{-- Tabs --}}
     <div class="flex gap-2 mb-6 border-b border-gray-200">
-        @foreach (['overview' => __('app.contracts.tabs.overview'), 'milestones' => __('app.contracts.tabs.milestones'), 'hours' => __('app.contracts.tabs.hours'), 'history' => __('app.contracts.tabs.history')] as $key => $label)
+        @foreach (['overview' => __('app.contracts.tabs.overview'), 'milestones' => __('app.contracts.tabs.milestones'), 'hours' => __('app.contracts.tabs.hours'), 'chat' => __('app.contracts.tabs.chat'), 'history' => __('app.contracts.tabs.history')] as $key => $label)
             @if (($key === 'milestones' && ! $isProject) || ($key === 'hours' && ! $isHourly))
                 @continue
             @endif
@@ -156,6 +156,32 @@
                     </ul>
                 @endif
             </div>
+        </div>
+    @endif
+
+    {{-- Chat --}}
+    @if ($tab === 'chat')
+        <div class="bg-white border border-gray-100 rounded-2xl flex flex-col h-[60vh] overflow-hidden">
+            <div class="flex-1 overflow-y-auto px-5 py-4 space-y-2 bg-gray-50/50">
+                @foreach ($messages as $message)
+                    @php($mine = $message->user_id === $me->id)
+                    <div class="flex {{ $mine ? 'justify-end' : 'justify-start' }}">
+                        <div class="max-w-[75%] px-3 py-2 rounded-2xl text-sm {{ $mine ? 'bg-blue-600 text-white' : 'bg-white border border-gray-200 text-gray-800' }} {{ $message->is_filtered ? 'opacity-80 italic' : '' }}">
+                            <div class="whitespace-pre-line">{{ $message->body }}</div>
+                            <div class="text-[10px] mt-1 {{ $mine ? 'text-blue-100' : 'text-gray-400' }}">{{ $message->created_at->format('H:i d.m') }}</div>
+                        </div>
+                    </div>
+                @endforeach
+                @if ($messages->isEmpty())
+                    <div class="text-center text-sm text-gray-500 py-8">{{ __('app.chat.empty_thread') }}</div>
+                @endif
+            </div>
+
+            <form wire:submit="sendChatMessage" class="border-t border-gray-100 p-3 flex gap-2">
+                <input type="text" wire:model="chatBody" placeholder="{{ __('app.chat.placeholder') }}"
+                       class="flex-1 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500" />
+                <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg">{{ __('app.chat.send') }}</button>
+            </form>
         </div>
     @endif
 

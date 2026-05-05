@@ -24,7 +24,7 @@
                 </div>
 
                 @if ($task->description)
-                    <div class="prose prose-sm max-w-none mt-6 text-gray-700 whitespace-pre-line">{!! e($task->description) !!}</div>
+                    <div class="prose prose-sm max-w-none mt-6 text-gray-700">{!! \App\Support\Markdown::render($task->description) !!}</div>
                 @endif
 
                 @if ($task->attachments->count() > 0)

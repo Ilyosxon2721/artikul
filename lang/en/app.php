@@ -189,6 +189,7 @@ return [
         'search_placeholder' => 'Search conversations…',
         'empty_conversations' => 'You have no conversations yet.',
         'pick_conversation' => 'Pick a conversation to start chatting.',
+        'empty_thread' => 'No messages yet — be the first.',
         'placeholder' => 'Message…',
         'send' => 'Send',
         'contact_filter_active' => 'Contact info is blocked until the contract starts',
@@ -245,7 +246,7 @@ return [
         'time_logs_title' => 'Time log',
         'no_logs' => 'No hours logged yet.',
         'confirm_cancel' => 'Cancel this contract?',
-        'tabs' => ['overview' => 'Overview', 'milestones' => 'Milestones', 'hours' => 'Hours', 'history' => 'History'],
+        'tabs' => ['overview' => 'Overview', 'milestones' => 'Milestones', 'hours' => 'Hours', 'chat' => 'Chat', 'history' => 'History'],
         'fields' => [
             'type' => 'Contract type', 'started_at' => 'Started', 'revisions' => 'Revisions',
             'milestone_title' => 'Milestone title', 'milestone_amount' => 'Amount',

@@ -8,9 +8,11 @@ use App\Enums\Currency;
 use App\Enums\MilestoneStatus;
 use App\Enums\TaskType;
 use App\Models\Contract;
+use App\Models\Conversation;
 use App\Models\TaskMilestone;
 use App\Models\TimeLog;
 use App\Notifications\MilestoneSubmittedNotification;
+use App\Services\Chat\MessagingService;
 use App\Services\Contracts\ContractService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +26,8 @@ class ContractShow extends Component
     public Contract $contract;
 
     public string $tab = 'overview';
+
+    public string $chatBody = '';
 
     public string $newMilestoneTitle = '';
 
@@ -48,7 +52,37 @@ class ContractShow extends Component
 
     public function setTab(string $tab): void
     {
-        $this->tab = in_array($tab, ['overview', 'milestones', 'hours', 'history'], true) ? $tab : 'overview';
+        $this->tab = in_array($tab, ['overview', 'milestones', 'hours', 'chat', 'history'], true) ? $tab : 'overview';
+    }
+
+    public function sendChatMessage(MessagingService $messaging): void
+    {
+        $user = Auth::user();
+        abort_unless($user !== null, 403);
+
+        $this->validate([
+            'chatBody' => ['required', 'string', 'min:1', 'max:4000'],
+        ]);
+
+        $conversation = $this->contractConversation();
+        if ($conversation === null) {
+            return;
+        }
+
+        $messaging->send($conversation, $user, $this->chatBody);
+        $this->chatBody = '';
+    }
+
+    private function contractConversation(): ?Conversation
+    {
+        $messaging = app(MessagingService::class);
+
+        return $messaging->openDirect(
+            $this->contract->buyer,
+            $this->contract->seller,
+            $this->contract->task,
+            $this->contract->id,
+        );
     }
 
     public function submit(ContractService $service): void
@@ -181,9 +215,17 @@ class ContractShow extends Component
 
     public function render(): View
     {
+        $conversation = $this->tab === 'chat' ? $this->contractConversation() : null;
+        $messages = $conversation !== null
+            ? $conversation->messages()->latest()->limit(100)->get()->reverse()->values()
+            : collect();
+
         return view('livewire.contracts.contract-show', [
             'milestones' => $this->contract->milestones()->get(),
             'timeLogs' => $this->contract->timeLogs()->orderByDesc('work_date')->get(),
+            'conversation' => $conversation,
+            'messages' => $messages,
+            'me' => Auth::user(),
             'isBuyer' => Auth::id() === $this->contract->buyer_id,
             'isSeller' => Auth::id() === $this->contract->seller_id,
             'isProject' => $this->contract->contract_type === TaskType::Project,

@@ -16,9 +16,11 @@
         "laravel/scout": "^11.1",
         "laravel/socialite": "^5.27",
         "laravel/tinker": "^2.10.1",
+        "league/commonmark": "^2.8",
         "livewire/livewire": "^3.6.4",
         "livewire/volt": "^1.7.0",
         "meilisearch/meilisearch-php": "^1.16",
+        "mews/purifier": "^3.4",
         "pragmarx/google2fa": "^9.0",
         "spatie/laravel-backup": "^10.2",
         "spatie/laravel-medialibrary": "^11.22",
@@ -59,6 +61,19 @@
             "@php artisan migrate --force",
             "npm install",
             "npm run build"
+        ],
+        "artikul:bootstrap": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan key:generate --ansi",
+            "@php artisan migrate:fresh --seed --force --ansi",
+            "@php artisan storage:link --ansi",
+            "@php artisan db:seed --class=Database\\\\Seeders\\\\DemoUserSeeder --force --ansi"
+        ],
+        "artikul:check": [
+            "vendor/bin/pint --test",
+            "vendor/bin/phpstan analyse --no-progress --memory-limit=2G",
+            "vendor/bin/pest --colors=always"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",

@@ -11,13 +11,15 @@ use Illuminate\Notifications\Notification;
 
 class ReviewPublishedNotification extends Notification
 {
-    use Queueable;
+    use PreferenceAware, Queueable;
+
+    protected ?string $category = 'reviews';
 
     public function __construct(public readonly Review $review) {}
 
     public function via(object $notifiable): array
     {
-        return ['database', 'mail'];
+        return $this->channelsFor($notifiable);
     }
 
     public function toMail(object $notifiable): MailMessage
