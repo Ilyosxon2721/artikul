@@ -35,7 +35,9 @@ new class extends Component
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6 gap-3">
+                @auth
                 <livewire:mode-switcher />
+                @endauth
 
                 <div class="text-xs text-gray-500 flex items-center gap-1">
                     @foreach (config('app.available_locales', ['ru', 'uz', 'en']) as $code)
@@ -43,6 +45,7 @@ new class extends Component
                     @endforeach
                 </div>
 
+                @auth
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-600 bg-white hover:text-gray-900 focus:outline-none">
@@ -95,6 +98,11 @@ new class extends Component
                         </button>
                     </x-slot>
                 </x-dropdown>
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900">{{ __('app.nav.login') }}</a>
+                    <a href="{{ route('register') }}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg">{{ __('app.nav.register') }}</a>
+                @endguest
             </div>
 
             <div class="-me-2 flex items-center sm:hidden">
@@ -117,6 +125,7 @@ new class extends Component
             </x-responsive-nav-link>
         </div>
 
+        @auth
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"></div>
@@ -133,5 +142,12 @@ new class extends Component
                 </button>
             </div>
         </div>
+        @endauth
+        @guest
+        <div class="pt-4 pb-2 border-t border-gray-200 px-4 flex flex-col gap-1">
+            <x-responsive-nav-link :href="route('login')" wire:navigate>{{ __('app.nav.login') }}</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('register')" wire:navigate>{{ __('app.nav.register') }}</x-responsive-nav-link>
+        </div>
+        @endguest
     </div>
 </nav>

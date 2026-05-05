@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 
 final class EnforcePasswordRotation
@@ -20,9 +21,9 @@ final class EnforcePasswordRotation
             return $next($request);
         }
 
-        /** @var \Illuminate\Support\Carbon|null $changed */
+        /** @var Carbon|null $changed */
         $changed = $user->password_changed_at;
-        $age = $changed instanceof \Illuminate\Support\Carbon ? $changed->diffInDays(now()) : PHP_INT_MAX;
+        $age = $changed instanceof Carbon ? $changed->diffInDays(now()) : PHP_INT_MAX;
 
         if ($age < self::ADMIN_MAX_AGE_DAYS) {
             return $next($request);

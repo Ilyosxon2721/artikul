@@ -11,7 +11,6 @@ use App\Services\Chat\MessagingService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 #[Layout('layouts.app')]
@@ -55,10 +54,24 @@ class ChatPage extends Component
         $this->body = '';
     }
 
-    #[On('echo-private:conversation.{activeConversationId},MessageSent')]
+    /**
+     * Dynamically subscribe to the active conversation's broadcast channel.
+     * Skipped when no conversation is open.
+     */
+    public function getListeners(): array
+    {
+        if ($this->activeConversationId === null) {
+            return [];
+        }
+
+        return [
+            'echo-private:conversation.'.$this->activeConversationId.',MessageSent' => 'refreshMessages',
+        ];
+    }
+
     public function refreshMessages(): void
     {
-        // Livewire will re-render thanks to $messages computed in render()
+        // Re-render via $messages computed in render().
     }
 
     public function render(): View

@@ -6,6 +6,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Admin\Widgets\RecentTasksWidget;
 use App\Filament\Admin\Widgets\RecentVerificationsWidget;
+use App\Filament\Admin\Widgets\SignupsChartWidget;
 use App\Filament\Admin\Widgets\StatsOverviewWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -41,6 +42,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 StatsOverviewWidget::class,
+                SignupsChartWidget::class,
                 RecentTasksWidget::class,
                 RecentVerificationsWidget::class,
             ])

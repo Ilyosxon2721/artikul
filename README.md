@@ -133,6 +133,28 @@ vendor/bin/pest           # тесты
 - [docs/support-faq.md](docs/support-faq.md) — типовые ответы поддержки.
 - [docs/launch-materials.md](docs/launch-materials.md) — пресс-релиз и посты.
 
+## Переменные окружения
+
+Полный список ключей в [`.env.example`](.env.example). Минимально для запуска:
+
+| Группа | Ключи | Обязательно |
+|---|---|---|
+| App | `APP_NAME`, `APP_KEY`, `APP_URL`, `APP_LOCALE=ru`, `APP_FALLBACK_LOCALE=en`, `APP_TIMEZONE=Asia/Tashkent` | да |
+| DB | `DB_CONNECTION=mysql`, `DB_HOST`, `DB_PORT`, `DB_DATABASE=artikul`, `DB_USERNAME`, `DB_PASSWORD` | да |
+| Cache / queue / session | `CACHE_STORE=redis`, `SESSION_DRIVER=redis`, `QUEUE_CONNECTION=redis`, `REDIS_HOST`, `REDIS_PASSWORD` | для prod |
+| Mail | `MAIL_MAILER=mailgun`, `MAILGUN_DOMAIN`, `MAILGUN_SECRET` (или Resend / SES) | да для prod |
+| WebSockets | `BROADCAST_CONNECTION=reverb`, `REVERB_APP_ID`, `REVERB_APP_KEY`, `REVERB_APP_SECRET`, `REVERB_HOST`, `REVERB_PORT` | для чата |
+| SMS (Eskiz) | `ESKIZ_EMAIL`, `ESKIZ_PASSWORD`, `ESKIZ_SENDER_ID=4546`, `ESKIZ_BASE_URL=https://notify.eskiz.uz/api` | для регистрации по телефону |
+| Telegram | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_BOT_USERNAME=artikul_bot`, `TELEGRAM_JOBS_CHANNEL` (опц.) | для бота |
+| Google OAuth | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URL` | для логина через Google |
+| S3 / R2 | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_BUCKET`, `AWS_ENDPOINT`, `AWS_DEFAULT_REGION`, `AWS_USE_PATH_STYLE_ENDPOINT=true` | для prod (вложения, верификация) |
+| Search | `SCOUT_DRIVER=meilisearch`, `MEILISEARCH_HOST`, `MEILISEARCH_KEY` | для поиска |
+| Analytics | `PLAUSIBLE_DOMAIN`, `PLAUSIBLE_HOST=https://plausible.io` | опц. |
+| Errors | `SENTRY_LARAVEL_DSN`, `SENTRY_TRACES_SAMPLE_RATE=0.2` | для prod |
+
+В тестах (`phpunit.xml`) используются: `DB_CONNECTION=sqlite`, `DB_DATABASE=:memory:`, `SCOUT_DRIVER=null`,
+`CACHE_STORE=array`, `SESSION_DRIVER=array`, `QUEUE_CONNECTION=sync` — внешние сервисы не нужны.
+
 ## Деплой
 
 ```bash

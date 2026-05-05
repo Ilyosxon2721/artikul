@@ -46,6 +46,11 @@ class HealthController extends Controller
 
     private function checkMeilisearch(): bool
     {
+        // Skip when scout is not actively using meilisearch.
+        if (config('scout.driver') !== 'meilisearch') {
+            return true;
+        }
+
         $host = config('scout.meilisearch.host');
         if (! is_string($host) || $host === '') {
             return true;
