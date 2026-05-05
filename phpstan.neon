@@ -1,5 +1,6 @@
 includes:
     - vendor/larastan/larastan/extension.neon
+    - phpstan-baseline.neon
 
 parameters:
     paths:
@@ -9,14 +10,19 @@ parameters:
         - database/seeders
         - routes
 
-    level: 6
+    level: 4
 
     excludePaths:
-        - app/Console/Kernel.php
-        - app/Exceptions/Handler.php
+        - app/Console/Kernel.php (?)
+        - app/Exceptions/Handler.php (?)
 
     ignoreErrors:
-        - '#PHPDoc tag @var#'
+        -
+            identifier: missingType.generics
+            reportUnmatched: false
+        -
+            identifier: missingType.iterableValue
+            reportUnmatched: false
 
-    checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false

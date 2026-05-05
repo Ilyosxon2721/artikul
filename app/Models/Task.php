@@ -15,10 +15,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Task extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes;
+    use HasFactory, Searchable, Sluggable, SoftDeletes;
 
     protected $fillable = [
         'buyer_id',
@@ -131,5 +132,36 @@ class Task extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function searchableAs(): string
+    {
+        return 'tasks';
+    }
+
+    public function shouldBeSearchable(): bool
+    {
+        return $this->status?->value === 'published';
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => (string) $this->description,
+            'slug' => $this->slug,
+            'task_type' => $this->type?->value,
+            'status' => $this->status?->value,
+            'category_id' => $this->category_id,
+            'subcategory_id' => $this->subcategory_id,
+            'marketplace_ids' => $this->marketplace_ids ?? [],
+            'budget_min' => $this->budget_min !== null ? (float) $this->budget_min : null,
+            'budget_max' => $this->budget_max !== null ? (float) $this->budget_max : null,
+            'currency' => $this->currency?->value,
+            'require_verified_seller' => (bool) $this->require_verified_seller,
+            'published_at' => $this->published_at?->getTimestamp(),
+            'deadline_at' => $this->deadline_at?->getTimestamp(),
+        ];
     }
 }

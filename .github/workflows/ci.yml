@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, develop, "feature/**"]
+    branches: [main, develop, "feature/**", "claude/**"]
   pull_request:
     branches: [main, develop]
 
@@ -18,7 +18,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.3"
-          extensions: mbstring, dom, fileinfo, mysql, redis, gd, intl, zip, bcmath, pdo_mysql
+          extensions: mbstring, dom, fileinfo, sqlite, mysql, redis, gd, intl, zip, bcmath, pdo_sqlite, pdo_mysql
           coverage: none
           tools: composer:v2
 
@@ -37,33 +37,11 @@ jobs:
         run: vendor/bin/pint --test
 
       - name: Run PHPStan (Larastan)
-        run: vendor/bin/phpstan analyse --no-progress --error-format=github
+        run: vendor/bin/phpstan analyse --no-progress --error-format=github --memory-limit=2G
 
   tests:
     name: Tests (Pest)
     runs-on: ubuntu-24.04
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: artikul_test
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-      redis:
-        image: redis:7
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
 
     steps:
       - name: Checkout
@@ -73,7 +51,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.3"
-          extensions: mbstring, dom, fileinfo, mysql, redis, gd, intl, zip, bcmath, pdo_mysql
+          extensions: mbstring, dom, fileinfo, sqlite, mysql, redis, gd, intl, zip, bcmath, pdo_sqlite, pdo_mysql
           coverage: none
           tools: composer:v2
 
@@ -82,6 +60,14 @@ jobs:
         with:
           node-version: "22"
           cache: "npm"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php83-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php83-
 
       - name: Install composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
@@ -96,27 +82,21 @@ jobs:
         run: |
           cp .env.example .env
           php artisan key:generate
+          touch database/database.sqlite
 
       - name: Run migrations
         env:
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_DATABASE: artikul_test
-          DB_USERNAME: root
-          DB_PASSWORD: root
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
         run: php artisan migrate --force
 
       - name: Run tests
         env:
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_DATABASE: artikul_test
-          DB_USERNAME: root
-          DB_PASSWORD: root
-          REDIS_HOST: 127.0.0.1
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
           QUEUE_CONNECTION: sync
           CACHE_STORE: array
           SESSION_DRIVER: array
-        run: vendor/bin/pest --parallel
+          SCOUT_DRIVER: "null"
+          BROADCAST_CONNECTION: log
+        run: vendor/bin/pest

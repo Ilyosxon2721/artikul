@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class SellerProfile extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -91,5 +92,40 @@ class SellerProfile extends Model
     public function services(): HasMany
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function searchableAs(): string
+    {
+        return 'sellers';
+    }
+
+    public function shouldBeSearchable(): bool
+    {
+        return (bool) $this->is_searchable && ! $this->trashed();
+    }
+
+    public function toSearchableArray(): array
+    {
+        $this->loadMissing(['user', 'specializations', 'marketplaces']);
+
+        return [
+            'id' => $this->id,
+            'user_id' => $this->user_id,
+            'name' => $this->user?->name,
+            'username' => $this->user?->username,
+            'headline' => $this->headline,
+            'bio' => (string) $this->bio,
+            'specializations' => $this->specializations->pluck('name_ru')->all(),
+            'marketplace_codes' => $this->marketplaces->pluck('code')->all(),
+            'country_code' => $this->user?->country_code,
+            'is_verified' => (bool) $this->is_verified,
+            'is_pro' => (bool) $this->is_pro,
+            'hourly_rate' => $this->hourly_rate !== null ? (float) $this->hourly_rate : null,
+            'languages' => $this->languages ?? [],
+            'rating_avg' => (float) $this->rating_avg,
+            'reviews_count' => (int) $this->reviews_count,
+            'total_contracts_completed' => (int) $this->total_contracts_completed,
+            'created_at' => $this->created_at?->getTimestamp(),
+        ];
     }
 }
