@@ -53,11 +53,21 @@ class SavedSearchMatchNotification extends Notification
         $lines = ['🔔 <b>'.$this->savedSearch->name.'</b>'];
         $lines[] = __('app.notifications.saved_search.body', ['count' => $this->matches->count()]);
 
+        $buttons = [];
         foreach ($this->matches->take(5) as $task) {
             $lines[] = '• '.$task->title.' — '.url('/tasks/'.$task->slug);
+            $buttons[] = [[
+                'text' => __('app.proposals.actions.respond').': '.mb_substr($task->title, 0, 32),
+                'callback_data' => 'apply:'.$task->id,
+            ]];
         }
 
-        return ['text' => implode("\n", $lines)];
+        $payload = ['text' => implode("\n", $lines)];
+        if (! empty($buttons)) {
+            $payload['reply_markup'] = ['inline_keyboard' => $buttons];
+        }
+
+        return $payload;
     }
 
     public function toArray(object $notifiable): array

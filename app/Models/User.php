@@ -29,6 +29,9 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'phone',
         'password',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'two_factor_confirmed_at',
         'avatar_url',
         'locale',
         'country_code',
@@ -52,6 +55,8 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'remember_token',
         'passport_number_hash',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
     ];
 
     protected function casts(): array
@@ -62,12 +67,20 @@ class User extends Authenticatable implements FilamentUser
             'banned_at' => 'datetime',
             'last_active_at' => 'datetime',
             'password_changed_at' => 'datetime',
+            'two_factor_confirmed_at' => 'datetime',
+            'two_factor_recovery_codes' => 'encrypted:array',
+            'two_factor_secret' => 'encrypted',
             'is_admin' => 'boolean',
             'is_super_admin' => 'boolean',
             'is_banned' => 'boolean',
             'current_mode' => UserMode::class,
             'password' => 'hashed',
         ];
+    }
+
+    public function hasTwoFactorEnabled(): bool
+    {
+        return $this->two_factor_confirmed_at !== null && $this->two_factor_secret !== null;
     }
 
     public function canAccessPanel(Panel $panel): bool

@@ -82,6 +82,9 @@ new class extends Component
                         <x-dropdown-link :href="route('saved-searches.index')" wire:navigate>
                             {{ __('app.saved_searches.my_title') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.two-factor')" wire:navigate>
+                            {{ __('app.two_factor.title') }}
+                        </x-dropdown-link>
 
                         <div class="border-t border-gray-100 my-1"></div>
 

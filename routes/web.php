@@ -20,6 +20,7 @@ use App\Livewire\Profile\NotificationPreferences;
 use App\Livewire\Profile\PortfolioManager;
 use App\Livewire\Profile\ServicesManager;
 use App\Livewire\Profile\TelegramLink;
+use App\Livewire\Profile\TwoFactorSetup;
 use App\Livewire\Proposals\MyProposals;
 use App\Livewire\Proposals\TaskProposalsList;
 use App\Livewire\Public\PublicBuyerProfile;
@@ -91,6 +92,16 @@ Volt::route('register/verify-phone', 'pages.auth.verify-phone')
     ->middleware('guest')
     ->name('register.verify-phone');
 
+// Two-factor challenge (after primary login)
+Volt::route('two-factor-challenge', 'pages.auth.two-factor-challenge')
+    ->middleware('guest')
+    ->name('two-factor.challenge');
+
+// Password rotation page (admins forced to it after 180 days)
+Volt::route('password/expired', 'pages.auth.password-expired')
+    ->middleware('auth')
+    ->name('password.expired');
+
 Route::middleware('auth')->group(function (): void {
     Route::view('dashboard', 'dashboard')->middleware('verified')->name('dashboard');
 
@@ -133,6 +144,7 @@ Route::middleware('auth')->group(function (): void {
     Route::get('profile/portfolio', PortfolioManager::class)->name('profile.portfolio');
     Route::get('profile/services', ServicesManager::class)->name('profile.services');
     Route::get('profile/notification-preferences', NotificationPreferences::class)->name('profile.notification-prefs');
+    Route::get('profile/two-factor', TwoFactorSetup::class)->name('profile.two-factor');
 
     // Saved searches
     Route::get('dashboard/saved-searches', MySavedSearches::class)->name('saved-searches.index');

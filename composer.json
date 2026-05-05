@@ -19,6 +19,7 @@
         "livewire/livewire": "^3.6.4",
         "livewire/volt": "^1.7.0",
         "meilisearch/meilisearch-php": "^1.16",
+        "pragmarx/google2fa": "^9.0",
         "spatie/laravel-backup": "^10.2",
         "spatie/laravel-medialibrary": "^11.22",
         "spatie/laravel-model-states": "^2.14",

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Livewire\Forms;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -26,9 +28,12 @@ class LoginForm extends Form
     /**
      * Authenticate by email OR phone (E.164 with optional spaces).
      *
+     * Returns true if the user is fully authenticated; returns false when a
+     * 2FA challenge is required and the user id has been parked in the session.
+     *
      * @throws ValidationException
      */
-    public function authenticate(): void
+    public function authenticate(): bool
     {
         $this->ensureIsNotRateLimited();
 
@@ -37,7 +42,8 @@ class LoginForm extends Form
             ? $this->normalizePhone($this->identifier)
             : Str::lower($this->identifier);
 
-        if (! Auth::attempt([$field => $value, 'password' => $this->password], $this->remember)) {
+        $user = User::query()->where($field, $value)->first();
+        if ($user === null || ! Hash::check($this->password, (string) $user->password)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -46,6 +52,17 @@ class LoginForm extends Form
         }
 
         RateLimiter::clear($this->throttleKey());
+
+        if ($user->hasTwoFactorEnabled()) {
+            session()->put('auth.2fa.user_id', $user->id);
+            session()->put('auth.2fa.remember', $this->remember);
+
+            return false;
+        }
+
+        Auth::login($user, $this->remember);
+
+        return true;
     }
 
     protected function ensureIsNotRateLimited(): void

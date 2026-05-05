@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\EnforcePasswordRotation;
 use App\Http\Middleware\EnsureMode;
 use App\Http\Middleware\SecurityHeaders;
 use App\Http\Middleware\SetLocale;
+use App\Http\Middleware\TrackLastActive;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -21,6 +23,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             SetLocale::class,
             SecurityHeaders::class,
+            TrackLastActive::class,
+            EnforcePasswordRotation::class,
         ]);
 
         $middleware->alias([
