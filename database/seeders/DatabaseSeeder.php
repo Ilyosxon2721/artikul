@@ -18,12 +18,14 @@ class DatabaseSeeder extends Seeder
             MarketplaceSeeder::class,
             CategorySeeder::class,
             SpecializationSeeder::class,
+            RolesSeeder::class,
         ]);
 
         // Demo data — local & testing environments only.
         if (app()->environment('local', 'testing')) {
             $this->call([
                 DemoUserSeeder::class,
+                DemoContentSeeder::class,
             ]);
         }
     }

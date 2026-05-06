@@ -33,7 +33,7 @@ class NewProposalNotification extends Notification
         return (new MailMessage)
             ->subject(__('app.notifications.new_proposal.subject'))
             ->line(__('app.notifications.new_proposal.body', ['task' => $this->proposal->task?->title ?? '']))
-            ->action(__('app.notifications.cta_open'), route('contracts.proposals.task', ['task' => $this->proposal->task?->slug]));
+            ->action(__('app.notifications.cta_open'), route('contracts.proposals.task', ['slug' => $this->proposal->task?->slug]));
     }
 
     public function toArray(object $notifiable): array

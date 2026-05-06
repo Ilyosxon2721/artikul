@@ -19,6 +19,30 @@ parameters:
 			path: app/Http/Controllers/Api/AuthController.php
 
 		-
+			message: '#^Call to function abort_unless\(\) with bool and 403 will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Http/Controllers/Api/ContractsController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$buyer_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/ProposalsController.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Http/Controllers/Api/ProposalsController.php
+
+		-
+			message: '#^Call to function abort_unless\(\) with bool and 403 will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Http/Controllers/Api/ReviewsController.php
+
+		-
 			message: '#^Call to an undefined method Laravel\\Socialite\\Contracts\\Provider\:\:scopes\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -59,6 +83,36 @@ parameters:
 			identifier: nullsafe.neverNull
 			count: 1
 			path: app/Http/Resources/BuyerProfileResource.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type App\\Enums\\ContractStatus\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Resources/ContractResource.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type App\\Enums\\Currency\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Resources/ContractResource.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type App\\Enums\\TaskType\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Resources/ContractResource.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type App\\Enums\\Currency\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Resources/ProposalResource.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type App\\Enums\\ProposalStatus\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Resources/ProposalResource.php
 
 		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$code\.$#'
