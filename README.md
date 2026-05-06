@@ -170,6 +170,10 @@ php artisan storage:link
 ./deploy.sh
 ```
 
+### Forge deploy script
+
+В Forge → Site → Deployment → Deploy Script вставьте `bash $FORGE_SITE_PATH/deploy.sh` или скопипастите содержимое `deploy.sh`. Скрипт идемпотентно создаёт необходимые директории `storage/framework/*` и `bootstrap/cache` _до_ `composer install` — это лечит ошибку **`In Compiler.php line 75: Please provide a valid cache path`** на первом деплое.
+
 ## Лицензия
 
 Проприетарный софт. © 2026 Sobirov Ilyoskhon. Все права защищены.
