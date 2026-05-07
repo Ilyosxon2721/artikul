@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('is_primary')->default(false);
             $table->timestamps();
 
-            $table->unique(['seller_profile_id', 'specialization_id']);
+            $table->unique(['seller_profile_id', 'specialization_id'], 'seller_spec_unique');
         });
     }
 
